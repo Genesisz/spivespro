@@ -54,7 +54,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="h-[200vh] max-w-screen text-center overflow-x-hidden">
+    <div className="h-[200vh] max-w-screen text-center overflow-x-hidden relative">
       <div className="absolute top-0 border border-red-500 left-0 w-screen h-[200vh]">
         <img
           src="/images/landing-page/hero-bg.png"
@@ -110,7 +110,7 @@ const LandingPage = () => {
           >
             <div>
               <input
-                placeholder="Enter Email"
+                // placeholder="Enter Email"
                 value={email}
                 onChange={handleEmailChange}
                 disabled={isLoading || isSuccess}

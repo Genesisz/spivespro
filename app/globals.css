@@ -1,12 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import "tailwindcss";
 
 @font-face {
-    font-family: "Adumu";
-    src: url("/font/adumu.ttf") format("truetype");
-    /* font-weight: 900; */
-    font-style: normal;
-    font-display: swap;
+  font-family: "Adumu";
+  src: url("/font/adumu.ttf") format("truetype");
+  /* font-weight: 900; */
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+}
+.adumu {
+  font-family: "Adumu", sans-serif;
+}
+
+@keyframes border-spin {
+  100% {
+    transform: rotate(-360deg);
   }
-  .adumu {
-    font-family: "Adumu", sans-serif;
-  }
+}
+
+/* Card wrapper - acts as border container */
+.card-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem; /* rounded-2xl */
+  background-image: linear-gradient(
+    to bottom,
+    #334155,
+    #1e293b
+  ); /* from-slate-700 to-slate-800 */
+}
+
+/* Gradient border animation */
+.card-wrapper::before {
+  content: "";
+  position: absolute;
+  left: -25%;
+  top: -25%;
+  height: 150%;
+  width: 150%;
+  background: conic-gradient(
+    rgba(218, 206, 212, 0.4) 0deg,
+    rgba(132, 136, 252, 0.4) 0deg,
+    transparent 80deg
+  );
+  animation: border-spin 7s linear infinite;
+}
+
+/* Card content */
+.card-content {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  height: calc(100% - 2px);
+  width: calc(100% - 2px);
+  border-radius: 1rem; /* rounded-2xl */
+  background-image: linear-gradient(
+    to bottom,
+    #03033e,
+    #03033e
+  ); /* from-slate-800 to-slate-900 */
+}
