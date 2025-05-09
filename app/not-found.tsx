@@ -20,7 +20,7 @@ const NotFound = () => {
             <br />
             error
           </h1>
-          <p className="text-white text-[16px] mt-8 font-montserrat font-[700]">
+          <p className="text-white text-center text-[16px] mt-8 font-[700]">
             page <span className='text-[#FF9434]'>"not found"</span> or has been moved to another link
           </p>
           <button className="bg-white mt-8 md:mt-4 text-black px-2 text-sm font-[600] py-1 rounded-sm hover:bg-opacity-90 transition-all">

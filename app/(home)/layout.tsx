@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import Footer from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
-import SessionClientProvider from "@/components/SessionClientProvider";
 
 export const metadata: Metadata = {
   title: "GO Spives",
@@ -17,10 +14,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` antialiased`}>
-        <SessionClientProvider>
-          {/* <Navbar /> */}
+          <Navbar />
           {children}
-        </SessionClientProvider>
       </body>
     </html>
   );

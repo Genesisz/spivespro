@@ -33,7 +33,6 @@ const UploadPhotoPage: React.FC = () => {
       });
       return;
     }
-
     setUploadingFile({
       name: file.name,
       size: file.size,
@@ -41,7 +40,6 @@ const UploadPhotoPage: React.FC = () => {
       status: 'uploading',
       type: file.type
     });
-    
     // Simulate upload progress
     let progress = 0;
     const interval = setInterval(() => {
@@ -50,7 +48,6 @@ const UploadPhotoPage: React.FC = () => {
         if (!prev) return null;
         return { ...prev, progress: Math.min(progress, 100) };
       });
-      
       if (progress >= 100) {
         clearInterval(interval);
         setUploadingFile(prev => {
@@ -63,7 +60,6 @@ const UploadPhotoPage: React.FC = () => {
 
   const handleComplete = () => {
     setIsComplete(true);
-    
     // Simulate redirect after completion
     setTimeout(() => {
       router.push('/dashboard');
@@ -76,18 +72,15 @@ const UploadPhotoPage: React.FC = () => {
         <title>Upload Photo - Spives</title>
         <meta name="description" content="Upload your profile photo" />
       </Head>
-      
       <div className="min-h-screen max-w-screen relative text-center overflow-x-hidden flex justify-center items-center">
-    <div className="absolute top-0 left-0 w-screen h-[100%]">
-      <img
-        src="/images/landing-page/hero-bg.png"
-        alt="hero background"
-        className="w-full h-full"
-      />
-    </div>
-    <div className="absolute top-0 left-0 w-screen h-[100%] bg-gradient-to-b from-[#03033E]/60 to-[#000066]/60" />
-
-        
+        <div className="absolute top-0 left-0 w-screen h-[100%]">
+          <img
+            src="/images/landing-page/hero-bg.png"
+            alt="hero background"
+            className="w-full h-full"
+          />
+        </div>
+        <div className="absolute top-0 left-0 w-screen h-[100%] bg-gradient-to-b from-[#03033E]/60 to-[#000066]/60" />
         <motion.div 
           className="w-full max-w-2xl relative z-10 mx-auto flex flex-col items-center"
           initial={{ opacity: 0, y: 20 }}
@@ -102,7 +95,6 @@ const UploadPhotoPage: React.FC = () => {
           >
             Upload photo
           </motion.h1>
-          
           <motion.p 
             className="text-white text-center mb-8"
             initial={{ opacity: 0 }}
@@ -111,7 +103,6 @@ const UploadPhotoPage: React.FC = () => {
           >
             Select a photo you want to use as your profile photo
           </motion.p>
-          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -124,7 +115,6 @@ const UploadPhotoPage: React.FC = () => {
               acceptedFileTypes={['image/jpeg', 'image/png']}
             />
           </motion.div>
-          
           {uploadingFile && (
             <motion.div 
               className="w-full mb-12"
@@ -146,7 +136,6 @@ const UploadPhotoPage: React.FC = () => {
               )}
             </motion.div>
           )}
-          
           <motion.button
             className="bg-blue-900 text-white font-medium py-2 px-6 rounded-md hover:bg-blue-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={handleComplete}
