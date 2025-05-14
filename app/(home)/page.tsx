@@ -178,7 +178,7 @@ const LandingPage = () => {
                   player profile{" "}
                   <span className="text-[#FF9434] adumu">cards</span>
                 </h1>
-                <p className="text-[14px] md:text-[17px] mt-4 text-black text-start font-[300]">
+                <p className="text-[14px] md:text-[17px] mt-3 text-black text-start font-[300]">
                   We designed the player profile cards because every young
                   talent deserves to be seen. In many African countries, limited
                   resources and lack of exposure hinder young athletes' dreams.

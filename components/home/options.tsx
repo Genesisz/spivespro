@@ -48,7 +48,7 @@ export default function FootballPlatformFeatures() {
           <h2 className="text-5xl md:text-4xl font-bold mb-4 adumu">
             Maximize your options
           </h2>
-          <p className="text-[14px] md:text-lg mb-6 md:mb-12">
+          <p className="text-[14px] md:text-lg mb-4">
             Get in front of more coaches. Access more programs. Start more
             conversations.
           </p>
@@ -86,7 +86,7 @@ export default function FootballPlatformFeatures() {
           </div>
         </div>
       </div>
-      <div className="flex justify-end absolute right-0 -bottom-52 md:-bottom-64 items-end h-fit ml-auto">
+      <div className="flex justify-end absolute right-0 -bottom-52 md:-bottom-72 items-end h-fit ml-auto">
         <Image
           width={1000}
           height={500}

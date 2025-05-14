@@ -27,11 +27,11 @@ const Navbar = () => {
         <Link href="/" className="inline-block">
           <div className="flex items-center">
             <Image
-              src="/logo/logo.svg"
+              src="/logo/Spiveslogo coloured.svg"
               alt="Spives Logo"
               width={150}
               height={50}
-              className="h-10 w-auto"
+              className="h-5 w-auto"
             />
           </div>
         </Link>

@@ -66,10 +66,10 @@ const Footer = () => {
               <p>Lagos, Nigeria.</p>
               <p>
                 <a
-                  href="mailto:hello@qrevents.com"
+                  href="mailto:info@gospives.pro"
                   className="hover:text-amber-500 transition-colors duration-300"
                 >
-                  hello@qrevents.com
+                  info@gospives.pro
                 </a>
               </p>
             </div>
@@ -214,7 +214,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="mt-16 pt-8 border-t-[.1px] border-blue-950 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 mb-4 md:mb-0">All right reserved.</p>
-          <p className="text-gray-400">Copyright © 2024 Phantm</p>
+          <p className="text-gray-400">Copyright © Spives 2025</p>
         </div>
       </div>
     </footer>
