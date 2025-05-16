@@ -45,9 +45,18 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          <button className="bg-orange-400 text-black px-4 py-2 rounded-sm">
-            Join Waitlist
-          </button>
+          <Link
+            href="/login"
+            className="bg-blue-950 text-white px-4 py-2 rounded-sm"
+          >
+            Login
+          </Link>
+          <Link
+            href="/register"
+            className="bg-orange-400 text-black px-4 py-2 rounded-sm"
+          >
+            Get Started
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -111,12 +120,18 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <button
-                className="bg-orange-400 text-black px-4 py-3 rounded-lg mt-2 w-full font-medium"
-                onClick={toggleMenu}
+              <Link
+                href="/login"
+                className="bg-blue-950 text-white px-4 py-2 rounded-sm"
               >
-                Join Waitlist
-              </button>
+                Login
+              </Link>
+              <Link
+                href="/register"
+                className="bg-orange-400 text-black px-4 py-2 rounded-sm"
+              >
+                Get Started
+              </Link>
             </div>
           </div>
         </div>

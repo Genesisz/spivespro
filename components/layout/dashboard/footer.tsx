@@ -71,7 +71,7 @@ const Footer = () => {
         
         <div className="border-t border-gray-200 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-gray-500 mb-4 md:mb-0">
-            © 2024 Spives. All rights reserved.
+            © 2025 Spives. All rights reserved.
           </p>
           <div className="flex space-x-4 text-sm text-gray-500">
             <span className="hover:text-orange-500 cursor-pointer transition-colors">Privacy Policy</span>

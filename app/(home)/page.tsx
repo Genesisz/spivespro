@@ -1,61 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Footer from "@/components/layout/footer";
 import FootballPlatformFeatures from "@/components/home/options";
 import Dashboard from "@/components/home/dashboard";
+import Link from "next/link";
 
 const LandingPage = () => {
-  const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-    setErrorMessage("");
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    // Basic email validation
-    if (!email || !email.includes("@")) {
-      setErrorMessage("Please enter a valid email address");
-      return;
-    }
-
-    setIsLoading(true);
-
-    try {
-      // Simulate API call to /onboarding\
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      const response = await fetch("/api/onboarding", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      if (response.ok) {
-        setIsSuccess(true);
-        setEmail("");
-      } else {
-        setErrorMessage("Something went wrong. Please try again.");
-      }
-    } catch (error) {
-      setErrorMessage("Network error. Please try again later.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleButtonClick = () => {
-    handleSubmit(new Event("submit") as any);
-  };
-
   return (
     <>
       <div className="min-h-[200vh] max-w-screen relative text-center overflow-x-hidden">
@@ -94,71 +45,28 @@ const LandingPage = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               <p className="text-white text-[16px] mt-8 font-montserrat font-[400] md:font-[700]">
-                Can't wait to see what's next?
+                Ready to get started?
               </p>
               <p className="text-white text-[16px] font-montserrat font-[400] md:font-[700]">
-                Join the waitlist now and be among the first to exprience the
-                future when we launch.
+                Join us today and be part of the future of sports.
               </p>
               <p className="text-white text-[16px] font-montserrat font-[400] md:font-[700]">
                 Don't miss out - secure your{" "}
                 <span className="text-[#FF9434]">sport</span> today!
               </p>
             </motion.div>
-            <motion.form
-              onSubmit={handleSubmit}
-              className="flex  gap-2 justify-center items-center"
+            <motion.div
+              className="flex justify-center items-center mt-8"
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.6 }}
             >
-              <div>
-                <input
-                  // placeholder="Enter Email"
-                  value={email}
-                  onChange={handleEmailChange}
-                  disabled={isLoading || isSuccess}
-                  className="bg-white/30 border border-[#FF9434] placeholder:text-white min-w-[15rem] md:min-w-[17.5rem] text-center mt-8 md:mt-4 text-white px-2 text-[11px] md:text-[13px] font-[600] py-2 md:py-3 rounded-sm hover:bg-opacity-90 transition-all"
-                />
-                {errorMessage && (
-                  <p className="text-red-400 text-[11px] mt-1">
-                    {errorMessage}
-                  </p>
-                )}
-              </div>
-              <button
-                type="submit"
-                disabled={isLoading || isSuccess}
-                className="w-fit bg-[#FF9434] mt-8 md:mt-4 text-black px-3 md:px-6 text-[11px] md:text-[13px] font-[400] py-2 md:py-3 rounded-sm hover:bg-opacity-90 transition-all disabled:opacity-70"
-              >
-                {isLoading ? (
-                  <div className="flex items-center justify-center">
-                    <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin mr-2"></div>
-                    Processing...
-                  </div>
-                ) : isSuccess ? (
-                  <div className="flex items-center">
-                    <svg
-                      className="w-4 h-4 mr-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
-                    </svg>
-                    Added to waitlist!
-                  </div>
-                ) : (
-                  "Join waitlist now"
-                )}
-              </button>
-            </motion.form>
+              <Link href="/register">
+                <button className="w-fit bg-[#FF9434] text-black px-6 md:px-8 text-[13px] md:text-[15px] font-[600] py-3 md:py-4 rounded-sm hover:bg-opacity-90 transition-all">
+                  Get Started
+                </button>
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
         <div className="bg-white w-full min-h-screen overflow-y-hidden h-fit flex relative px-[1rem] md:px-[2rem] py-[3rem]">
@@ -196,62 +104,17 @@ const LandingPage = () => {
                   worldwide. At Spives, we believe every child's dream of
                   becoming a football star should be within reach.
                 </p>
-                <motion.form
-                  onSubmit={handleSubmit}
-                  className="flex flex-row gap-2 mt-4 md:mt-8"
+                <motion.div
+                  className="flex justify-start mt-8"
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                  <div>
-                    <div className="relative rounded-sm p-[1px] bg-gradient-to-r from-[#FF9434] via-[#FF9434] to-gray-100 mt-8 md:mt-4 w-full min-w-[15rem] md:min-w-[17.5rem]">
-                      <input
-                        // placeholder="Enter Email"
-                        value={email}
-                        onChange={handleEmailChange}
-                        disabled={isLoading || isSuccess}
-                        className="w-full bg-gray-100 placeholder:text-white text-center text-white px-2 text-[13px] font-[600] py-2 md:py-3 rounded-sm hover:bg-opacity-90 transition-all"
-                      />
-                    </div>
-                    {errorMessage && (
-                      <p className="text-red-400 text-[11px] mt-1">
-                        {errorMessage}
-                      </p>
-                    )}
-                  </div>
-                  <button
-                    type="submit"
-                    disabled={isLoading || isSuccess}
-                    className="w-fit bg-[#FF9434] mt-8 md:mt-4 text-black px-3 md:px-6 text-[11px] md:text-[13px] font-[400] py-2 md:py-3 rounded-sm hover:bg-opacity-90 transition-all disabled:opacity-70"
-                  >
-                    {isLoading ? (
-                      <div className="flex items-center justify-center">
-                        <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin mr-2"></div>
-                        Processing...
-                      </div>
-                    ) : isSuccess ? (
-                      <div className="flex items-center">
-                        <svg
-                          className="w-4 h-4 mr-2"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          ></path>
-                        </svg>
-                        Added to waitlist!
-                      </div>
-                    ) : (
-                      "Join waitlist now"
-                    )}
-                  </button>
-                </motion.form>
+                  <Link href="/register" className="w-fit bg-[#FF9434] text-black px-6 md:px-8 text-[13px] md:text-[15px] font-[600] py-3 md:py-4 rounded-sm hover:bg-opacity-90 transition-all">
+                  
+                      Get Started
+                  </Link>
+                </motion.div>
               </div>
               <motion.img
                 src="/images/landing-page/Player Card 2025 GLD.svg"

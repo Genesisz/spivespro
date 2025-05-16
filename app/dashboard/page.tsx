@@ -192,11 +192,6 @@ const App = () => {
           </div>
         </div>
       </main>
-
-      {/* Newsletter Section */}
-        
-
-      {/* Footer */}
       
     </div>
   );
@@ -217,8 +212,8 @@ const PositionBadge = ({
   active?: boolean;
 }) => (
   <div
-    className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center font-[500] text-[11px] sm:text-xs shadow-sm border-2 border-white ${
-      active ? "bg-blue-950 text-white" : "bg-gray-200 text-gray-500"
+    className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center font-[500] text-[9px] sm:text-xs shadow-sm border-2 border-white ${
+      active ? "bg-blue-950 text-orange-300" : "bg-gray-200 text-gray-500"
     }`}
   >
     {position}
@@ -233,7 +228,7 @@ const ActionButton = ({
   text: string;
 }) => (
   <button className="w-full flex flex-col items-center justify-center space-y-1 sm:space-y-2 py-2 sm:py-4 shadow-sm rounded-lg hover:bg-gray-50 transition-all">
-    <span className="text-xs sm:text-sm font-semibold mb-1 text-blue-950">{text}</span>
+    <span className="text-xs font-[400] mb-1 text-blue-950">{text}</span>
     {icon}
   </button>
 );
