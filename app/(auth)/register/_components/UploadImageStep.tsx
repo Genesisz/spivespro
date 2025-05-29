@@ -11,6 +11,8 @@ interface UploadingFile {
   progress: number;
   status: FileStatus;
   type: string;
+  url?: string; // Cloudinary URL
+  public_id?: string; // Cloudinary public ID
 }
 
 interface UploadImageStepProps {
@@ -23,7 +25,27 @@ interface UploadImageStepProps {
 const UploadImageStep: React.FC<UploadImageStepProps> = ({ uploadedImage, setUploadedImage, onContinue, onBack }) => {
   const [isComplete, setIsComplete] = useState(false);
 
-  const handleFile = useCallback((file: File) => {
+  const uploadToCloudinary = async (file: File): Promise<{url: string, public_id: string}> => {
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    const response = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error('Upload error:', errorData);
+      throw new Error(`Upload failed: ${errorData.error || 'Unknown error'}`);
+    }
+
+    const data = await response.json();
+    console.log('Cloudinary response:', data); // Debug log
+    return { url: data.url, public_id: data.public_id };
+  };
+
+  const handleFile = useCallback(async (file: File) => {
     if (!['image/jpeg', 'image/png'].includes(file.type) || file.size > 10 * 1024 * 1024) {
       setUploadedImage({
         name: file.name,
@@ -34,6 +56,7 @@ const UploadImageStep: React.FC<UploadImageStepProps> = ({ uploadedImage, setUpl
       });
       return;
     }
+
     setUploadedImage({
       name: file.name,
       size: file.size,
@@ -41,21 +64,40 @@ const UploadImageStep: React.FC<UploadImageStepProps> = ({ uploadedImage, setUpl
       status: 'uploading',
       type: file.type
     });
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += 10;
+
+    try {
+      // Simulate progress for UI feedback
+      const progressInterval = setInterval(() => {
+        setUploadedImage((prev: UploadingFile | null) => {
+          if (!prev || prev.status !== 'uploading') return prev;
+          const newProgress = Math.min(prev.progress + 20, 90);
+          return { ...prev, progress: newProgress };
+        });
+      }, 200);
+
+      const cloudinaryResponse = await uploadToCloudinary(file);
+      
+      clearInterval(progressInterval);
+      
       setUploadedImage((prev: UploadingFile | null) => {
         if (!prev) return null;
-        return { ...prev, progress: Math.min(progress, 100) };
+        return { 
+          ...prev, 
+          progress: 100,
+          status: 'success',
+          url: cloudinaryResponse.url,
+          public_id: cloudinaryResponse.public_id
+        };
       });
-      if (progress >= 100) {
-        clearInterval(interval);
-        setUploadedImage((prev: UploadingFile | null) => {
-          if (!prev) return null;
-          return { ...prev, status: 'success' };
-        });
-      }
-    }, 300);
+
+      console.log('Image uploaded successfully:', cloudinaryResponse.url); // Debug log
+    } catch (error) {
+      console.error('Upload error:', error);
+      setUploadedImage((prev: UploadingFile | null) => {
+        if (!prev) return null;
+        return { ...prev, status: 'error', progress: 0 };
+      });
+    }
   }, [setUploadedImage]);
 
   const handleContinue = () => {
@@ -86,7 +128,22 @@ const UploadImageStep: React.FC<UploadImageStepProps> = ({ uploadedImage, setUpl
             type={uploadedImage.type}
           />
           {uploadedImage.status === 'error' && (
-            <div className="text-red-500 text-sm mt-2">Only JPEG or PNG files under 10MB are allowed.</div>
+            <div className="text-red-500 text-sm mt-2">
+              {uploadedImage.type && !['image/jpeg', 'image/png'].includes(uploadedImage.type) 
+                ? 'Only JPEG or PNG files are allowed.' 
+                : uploadedImage.size > 10 * 1024 * 1024 
+                  ? 'File size must be under 10MB.' 
+                  : 'Upload failed. Please try again.'}
+            </div>
+          )}
+          {uploadedImage.status === 'success' && uploadedImage.url && (
+            <div className="mt-4 text-center">
+              <img 
+                src={uploadedImage.url} 
+                alt="Uploaded preview" 
+                className="w-32 h-32 object-cover rounded-full mx-auto border-2 border-orange-400"
+              />
+            </div>
           )}
         </motion.div>
       )}
@@ -108,4 +165,4 @@ const UploadImageStep: React.FC<UploadImageStepProps> = ({ uploadedImage, setUpl
   );
 };
 
-export default UploadImageStep; 
+export default UploadImageStep;

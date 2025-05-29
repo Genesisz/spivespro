@@ -5,6 +5,7 @@ import { useUser } from "../../lib/useUser";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Image from "next/image";
+
 // Define TypeScript interfaces
 interface PlayerData {
   username: string;
@@ -70,44 +71,49 @@ const App = () => {
   // Use user data from session if available, otherwise fallback to static
   const player = user
     ? {
-        username: user.nickname || user.email,
-        name: user.fullName || "",
-        country: user.country || "",
-        position: user.position || "",
+        username: user.nickname || user.email?.split('@')[0] || 'Player',
+        name: user.fullName || 'Unknown Player',
+        country: user.country || 'Unknown',
+        position: user.position || 'Unknown',
         age: user.dateOfBirth
           ? new Date().getFullYear() - new Date(user.dateOfBirth).getFullYear()
-          : "",
-        foot: user.foot || "",
-        positions: Array.isArray(user.selectedPositions)
-          ? user.selectedPositions.filter(
-              (p): p is string => typeof p === "string"
-            )
-          : user.position
-          ? [user.position]
-          : [],
+          : 0,
+        foot: user.foot || 'Unknown',
+        positions: user.selectedPositions || (user.position ? [user.position] : []),
+        club: user.club || 'No Club',
         stats: user.stats || { tops: 0, matchesPlayed: 0, minutesPlayed: 0 },
-        team: user.team || { name: "", logo: "" },
-        uploadedImage: user.uploadedImage || "",
+        team: user.team || { name: user.club || 'No Club', logo: '⚽' },
+        uploadedImage: user.uploadedImageUrl || '',
       }
     : playerData;
 
   return (
-    <div className="flex flex-col min-h-fit bg-white font-sans">
-      {/* Navigation */}
-
+    <div className="flex flex-col min-h-screen bg-white font-sans">
       {/* Main Content */}
       <main className="flex-1 container mx-auto px-2 sm:px-4 py-8 sm:py-20 w-full">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
           {/* Left Column - Profile Picture */}
           <div className="md:col-span-3 mb-6 md:mb-0 flex justify-center items-center">
             <div className="bg-white rounded-lg w-32 h-32 sm:w-full sm:h-auto flex justify-center items-center">
-              <img
-                src="/images/dashboard/Spives Web App Icon.svg"
-                alt="Player"
-                className="w-24 h-24 sm:w-full sm:h-auto object-cover rounded-lg"
-              />
+              {player.uploadedImage ? (
+                <img
+                  src={player.uploadedImage}
+                  alt="Player"
+                  className="w-24 h-24 sm:w-auto sm:h-auto object-cover rounded-lg"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+
+                
+              ) : (
+                <div className="w-24 h-24 sm:w-32 sm:h-32 bg-gray-200 rounded-lg flex items-center justify-center">
+                  <span className="text-gray-500 text-sm">No Image</span>
+                </div>
+              )}
             </div>
           </div>
+
           {/* Middle Column - Player Info */}
           <div className="md:col-span-5 mb-6 md:mb-0">
             <div className="">
@@ -116,7 +122,7 @@ const App = () => {
                   {player.username}
                 </h1>
                 <div className="">
-                  <Image src="/images/dashboard/Nigeria Icon.png" width={24} height={24} className="sm:w-6 sm:h-6" alt="country" />
+                  <span className="text-lg">🌍</span>
                 </div>
               </div>
 
@@ -127,21 +133,22 @@ const App = () => {
                   <PlayerInfoRow label="Position" value={player.position} />
                   <PlayerInfoRow label="Age" value={player.age.toString()} />
                   <PlayerInfoRow label="Foot" value={player.foot} />
+                  <PlayerInfoRow label="Club" value={player.club} />
                 </div>
 
                 <div className="flex flex-col items-end justify-between h-full gap-4 sm:gap-8 w-full sm:w-auto">
                   <h1 className="text-xs sm:text-sm text-blue-950 font-bold text-center">
-                    10
+                    {player.stats.matchesPlayed}
                     <br />
                     <span className="font-[300] text-[10px] sm:text-xs relative bottom-2 tracking-wide">APPS</span>
                   </h1>
                   <div className="flex gap-1.5 sm:gap-2 flex-wrap">
-                  {player.positions &&
-                    player.positions.map((pos) =>
-                      pos ? (
-                        <PositionBadge key={pos} position={pos} active={true} />
-                      ) : null
-                    )}
+                    {player.positions &&
+                      player.positions.slice(0, 5).map((pos, index) =>
+                        pos ? (
+                          <PositionBadge key={`${pos}-${index}`} position={pos} active={true} />
+                        ) : null
+                      )}
                   </div>
                 </div>
               </div>
@@ -155,28 +162,29 @@ const App = () => {
               <ActionButton icon={<ImageIcon size={20} className="sm:w-6 sm:h-6" />} text="Gallery" />
             </div>
           </div>
+
           {/* Right Column - Stats */}
           <div className="md:col-span-2 lg:mt-16 mb-6 md:mb-0">
             <div className="bg-white rounded-lg mb-6 sm:mb-8 shadow-md">
               <div className="flex justify-between items-center w-full mb-0 p-3 sm:p-4">
                 <div className="flex items-center w-full justify-between">
-                  <h3 className="font-[400] text-xs sm:text-sm">Home FC</h3>
-                  <span className="ml-2 text-xs sm:text-sm">logo</span>
+                  <h3 className="font-[400] text-xs sm:text-sm">{player.team.name}</h3>
+                  <span className="ml-2 text-xs sm:text-sm">{player.team.logo}</span>
                 </div>
               </div>
               <div className="flex flex-col gap-3 sm:gap-4 px-2">
-                <StatBar
-                  label="Matches Played"
-                  value={30}
-                />
-                <StatBar
-                  label="Minutes Played"
-                  value={12}
-                />
+                <StatBar label="Matches Played" value={player.stats.matchesPlayed} />
+                <StatBar label="Minutes Played" value={player.stats.minutesPlayed} />
               </div>
               <div className="mt-6 sm:mt-8">
                 <div className="relative h-28 sm:h-40 flex justify-end items-end bg-blue-50 overflow-hidden">
-                  <Image className="w-full" src="/images/dashboard/Vector 43 from Spives Web App.svg" width={100} height={100} alt="graph" />
+                  <Image 
+                    className="w-full" 
+                    src="/images/dashboard/Vector 43 from Spives Web App.svg" 
+                    width={100} 
+                    height={100} 
+                    alt="graph" 
+                  />
                   <div className="absolute top-2 right-2 bg-blue-brand-900 text-white text-[10px] sm:text-[11px] px-2 sm:px-3 py-1 rounded">
                     {player.stats.minutesPlayed} Mins
                   </div>
@@ -184,15 +192,15 @@ const App = () => {
               </div>
             </div>
           </div>
+
           <div className="bg-white rounded-lg md:col-span-2 lg:mt-8">
             <h3 className="text-xs text-gray-400 mb-2 sm:mb-3 font-semibold">Top 3 Positions</h3>
-            <div className="rounded-lg h-fit ">
+            <div className="rounded-lg h-fit">
               <FootballField positions={player.positions as string[]} />
             </div>
           </div>
         </div>
       </main>
-      
     </div>
   );
 };

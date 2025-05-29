@@ -1,26 +1,28 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/layout/footer";
-import Navbar from "@/components/layout/navbar";
-import SessionClientProvider from "@/components/SessionClientProvider";
+import SessionProvider from "@/components/providers/SessionProvider";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "GO Spives",
-  description: "Go spives Pro 2025",
+  title: "Gospives",
+  description: "Football player management platform",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={` antialiased`}>
-        <SessionClientProvider>
-          {/* <Navbar /> */}
-          {children}
-        </SessionClientProvider>
+      <body className={`${inter.variable} font-sans antialiased`}>
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );

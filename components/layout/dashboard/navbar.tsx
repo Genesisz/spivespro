@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
-import { Settings, FileText, ImageIcon } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Settings } from "lucide-react";
 import { useUser } from "@/lib/useUser";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
+
 // Define TypeScript interfaces
 interface PlayerData {
   username: string;
@@ -51,42 +51,48 @@ const playerData: PlayerData = {
 const Navbar = () => {
   const { user, loading, authenticated } = useUser();
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (!loading && !authenticated) {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!loading && !authenticated && mounted) {
       router.push("/login");
     }
-  }, [loading, authenticated, router]);
+  }, [loading, authenticated, router, mounted]);
 
-  if (loading || !authenticated) {
+  if (!mounted || loading || !authenticated) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        Loading...
-      </div>
+      <header className="border-b border-gray-200 bg-white sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+          <div className="flex items-center">
+            <div className="h-10 w-32 bg-gray-200 rounded animate-pulse"></div>
+          </div>
+          <div className="flex items-center">
+            <div className="h-8 w-20 bg-gray-200 rounded animate-pulse"></div>
+          </div>
+        </div>
+      </header>
     );
   }
 
   // Use user data from session if available, otherwise fallback to static
   const player = user
     ? {
-        username: user.nickname || user.email,
-        name: user.fullName || "",
-        country: user.country || "",
-        position: user.position || "",
+        username: user.nickname || user.email?.split('@')[0] || 'Player',
+        name: user.fullName || 'Unknown Player',
+        country: user.country || 'Unknown',
+        position: user.position || 'Unknown',
         age: user.dateOfBirth
           ? new Date().getFullYear() - new Date(user.dateOfBirth).getFullYear()
-          : "",
-        foot: user.foot || "",
-        positions: Array.isArray(user.selectedPositions)
-          ? user.selectedPositions.filter(
-              (p): p is string => typeof p === "string"
-            )
-          : user.position
-          ? [user.position]
-          : [],
+          : 0,
+        foot: user.foot || 'Unknown',
+        positions: user.selectedPositions || (user.position ? [user.position] : []),
         stats: user.stats || { tops: 0, matchesPlayed: 0, minutesPlayed: 0 },
-        team: user.team || { name: "", logo: "" },
-        uploadedImage: user.uploadedImage || "",
+        team: user.team || { name: user.club || 'No Club', logo: '⚽' },
+        uploadedImage: user.uploadedImageUrl || '',
       }
     : playerData;
 
@@ -94,13 +100,13 @@ const Navbar = () => {
     <header className="border-b border-gray-200 bg-white sticky top-0 z-10">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
-        <Image
-              src="/logo/logo.svg"
-              alt="Spives Logo"
-              width={150}
-              height={50}
-              className="h-10 w-auto"
-            />
+          <Image
+            src="/logo/logo.svg"
+            alt="Spives Logo"
+            width={150}
+            height={50}
+            className="h-10 w-auto"
+          />
         </div>
         <nav className="hidden md:flex items-center space-x-8">
           <NavLink text="Clubs" />
@@ -113,16 +119,20 @@ const Navbar = () => {
         </nav>
         <div className="flex items-center">
           <div className="flex items-center">
-            <div className="h-10 w-10 rounded-full bg-gray-800 overflow-hidden mr-2">
-              <img
-                src={
-                  player.uploadedImage
-                    ? `/uploads/${player.uploadedImage}`
-                    : "/api/placeholder/100/100"
-                }
-                alt="Profile"
-                className="h-full w-full object-cover"
-              />
+            <div className="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-2 flex items-center justify-center">
+              {player.uploadedImage ? (
+                <img
+                  src={player.uploadedImage}
+                  alt="Profile"
+                  className="h-full w-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.parentElement!.innerHTML = '<span class="text-xs text-gray-500">No Image</span>';
+                  }}
+                />
+              ) : (
+                <span className="text-xs text-gray-500">No Image</span>
+              )}
             </div>
             <div className="hidden md:block">
               <p className="text-sm font-medium">{player.name}</p>

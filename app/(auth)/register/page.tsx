@@ -115,6 +115,8 @@ interface UploadingFile {
   progress: number;
   status: FileStatus;
   type: string;
+  url?: string;
+  public_id?: string;
 }
 
 const CreateProfilePage = () => {
@@ -123,18 +125,18 @@ const CreateProfilePage = () => {
   const [loadingLocal, setLoadingLocal] = useState(false);
   const [step, setStep] = useState(0); // 0: form, 1: position, 2: upload image, 3: upload file
   const [formData, setFormData] = useState({
-    fullName: '',
-    dateOfBirth: '',
-    email: '',
-    club: '',
-    nickname: '',
-    phoneNumber: '',
-    country: '',
-    stateRegion: '',
-    foot: '',
-    position: '',
-    password: '',
-    confirmPassword: ''
+    fullName: 'John Doe',
+    dateOfBirth: '1995-05-15',
+    email: 'john.doe@example.com',
+    club: 'Manchester United FC',
+    nickname: 'Johnny',
+    phoneNumber: '+1234567890',
+    country: 'United States',
+    stateRegion: 'California',
+    foot: 'Right',
+    position: 'Midfielder',
+    password: 'password123',
+    confirmPassword: 'password123'
   });
   const [activeTab, setActiveTab] = useState('personal');
   const [selectedPositions, setSelectedPositions] = useState<Position[]>([]);
@@ -271,19 +273,32 @@ const CreateProfilePage = () => {
     setApiError(null);
     setLoadingLocal(true);
     try {
+      console.log('Sending step 4 data:', {
+        id: registrationId,
+        uploadedImageUrl: uploadedImage?.url,
+        uploadedImagePublicId: uploadedImage?.public_id,
+        uploadedFileName: uploadedFile?.name
+      });
+
       const res = await fetch('/api/registeration/step4', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           id: registrationId,
-          uploadedImage: uploadedImage?.name || '', // In a real app, send the file itself
-          uploadedFile: uploadedFile?.name || '',   // In a real app, send the file itself
+          uploadedImageUrl: uploadedImage?.url || null,
+          uploadedImagePublicId: uploadedImage?.public_id || null,
+          uploadedFileName: uploadedFile?.name || null,
         }),
       });
+      
       const data = await res.json();
+      console.log('Step 4 response:', data);
+      
       if (!res.ok) throw new Error(data.error || 'Failed to save step 4');
+      
       router.push('/dashboard');
     } catch (err: any) {
+      console.error('Step 4 error:', err);
       setApiError(err.message);
     } finally {
       setLoadingLocal(false);
