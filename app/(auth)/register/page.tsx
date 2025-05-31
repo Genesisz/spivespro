@@ -125,18 +125,18 @@ const CreateProfilePage = () => {
   const [loadingLocal, setLoadingLocal] = useState(false);
   const [step, setStep] = useState(0); // 0: form, 1: position, 2: upload image, 3: upload file
   const [formData, setFormData] = useState({
-    fullName: 'John Doe',
-    dateOfBirth: '1995-05-15',
-    email: 'john.doe@example.com',
-    club: 'Manchester United FC',
-    nickname: 'Johnny',
-    phoneNumber: '+1234567890',
-    country: 'United States',
-    stateRegion: 'California',
-    foot: 'Right',
-    position: 'Midfielder',
-    password: 'password123',
-    confirmPassword: 'password123'
+    fullName: '',
+    dateOfBirth: '',
+    email: '',
+    club: '',
+    nickname: '',
+    phoneNumber: '',
+    country: '',
+    stateRegion: '',
+    foot: '',
+    position: '',
+    password: '',
+    confirmPassword: ''
   });
   const [activeTab, setActiveTab] = useState('personal');
   const [selectedPositions, setSelectedPositions] = useState<Position[]>([]);

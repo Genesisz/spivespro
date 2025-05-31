@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@/lib/useUser';
-
+import Link from 'next/link';
 const LoginPage: React.FC = () => {
   const router = useRouter();
   const { authenticated, loading } = useUser();
@@ -90,9 +90,9 @@ const LoginPage: React.FC = () => {
             </div>
 
             <div className="flex justify-between items-center mb-6 text-xs md:text-sm">
-              <button type="button" className="text-orange-400 hover:text-orange-500 font-medium">
+              <Link href="/register" className="text-orange-400 hover:text-orange-500 font-medium">
                 Create account
-              </button>
+              </Link>
               <button type="button" className="text-blue-950 hover:text-blue-950 font-medium">
                 Forgotten Password?
               </button>
