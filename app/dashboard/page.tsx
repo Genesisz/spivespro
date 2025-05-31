@@ -88,7 +88,7 @@ const App = () => {
     : playerData;
 
   return (
-    <div className="flex flex-col min-h-screen bg-white font-sans">
+    <div className="flex flex-col min-h-fit bg-white font-sans">
       {/* Main Content */}
       <main className="flex-1 container mx-auto px-2 sm:px-4 py-8 sm:py-20 w-full">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">

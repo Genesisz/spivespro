@@ -97,7 +97,7 @@ const Navbar = () => {
     : playerData;
 
   return (
-    <header className="border-b border-gray-200 bg-white sticky top-0 z-10">
+    <header className="border-b border-gray-200 bg-white sticky top-0 z-100">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <Image
