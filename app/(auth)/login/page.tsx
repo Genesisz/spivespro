@@ -47,7 +47,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="h-[100dvh] max-w-screen relative text-center overflow-x-hidden flex justify-center items-center">
-    <div className="absolute top-0 left-0 w-screen h-[100dvh]">
+    <div className="absolute bottom-0 left-0 w-screen h-[140dvh]">
       <img
         src="/images/landing-page/hero-bg.png"
         alt="hero background"
