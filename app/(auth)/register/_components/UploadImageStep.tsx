@@ -46,7 +46,7 @@ const UploadImageStep: React.FC<UploadImageStepProps> = ({ uploadedImage, setUpl
   };
 
   const handleFile = useCallback(async (file: File) => {
-    if (!['image/jpeg', 'image/png'].includes(file.type) || file.size > 10 * 1024 * 1024) {
+    if (!['image/jpeg', 'image/png'].includes(file.type) || file.size > 3 * 1024 * 1024) {
       setUploadedImage({
         name: file.name,
         size: file.size,
@@ -114,7 +114,7 @@ const UploadImageStep: React.FC<UploadImageStepProps> = ({ uploadedImage, setUpl
       <motion.div className="w-full mb-6">
         <DragDropUpload 
           onFileSelect={handleFile}
-          maxSizeKb={10240}
+          maxSizeKb={3072}
           acceptedFileTypes={['image/jpeg', 'image/png']}
         />
       </motion.div>
@@ -131,8 +131,8 @@ const UploadImageStep: React.FC<UploadImageStepProps> = ({ uploadedImage, setUpl
             <div className="text-red-500 text-sm mt-2">
               {uploadedImage.type && !['image/jpeg', 'image/png'].includes(uploadedImage.type) 
                 ? 'Only JPEG or PNG files are allowed.' 
-                : uploadedImage.size > 10 * 1024 * 1024 
-                  ? 'File size must be under 10MB.' 
+                : uploadedImage.size > 3 * 1024 * 1024 
+                  ? 'File size must be under 3MB.' 
                   : 'Upload failed. Please try again.'}
             </div>
           )}

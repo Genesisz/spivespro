@@ -35,6 +35,8 @@ const LoginPage: React.FC = () => {
     if (res?.error) {
       setError(res.error);
       console.log({res})
+    } else if (res?.ok) {
+      window.location.href = '/dashboard';
     }
     // Do not redirect here; let useEffect handle it
   };

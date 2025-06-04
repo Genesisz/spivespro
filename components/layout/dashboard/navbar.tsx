@@ -101,11 +101,11 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <Image
-            src="/logo/logo.svg"
+            src="/logo/Spiveslogo coloured.svg"
             alt="Spives Logo"
             width={150}
             height={50}
-            className="h-10 w-auto"
+            className="h-6 border w-auto"
           />
         </div>
         <nav className="hidden md:flex items-center space-x-8">

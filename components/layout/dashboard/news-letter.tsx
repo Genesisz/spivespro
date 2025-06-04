@@ -5,6 +5,7 @@ import { Instagram, Twitter, Facebook, Linkedin, Mail, ArrowRight, CheckCircle }
 const Newsletter = () => {
     const [email, setEmail] = useState('');
     const [submitted, setSubmitted] = useState(false);
+    const [copied, setCopied] = useState(false);
   
     const handleSubmit = () => {
       if (email) {
@@ -13,9 +14,29 @@ const Newsletter = () => {
         // Here you would normally send the email to your API
       }
     };
+
+    const handleReferralClick = async () => {
+      const referralLink = 'https://go-spives-pro.vercel.app/';
+      
+      try {
+        await navigator.clipboard.writeText(referralLink);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000);
+      } catch (err) {
+        // Fallback for browsers that don't support clipboard API
+        const textArea = document.createElement('textarea');
+        textArea.value = referralLink;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 3000);
+      }
+    };
   
     return (
-      <section className="bg-gradient-to-r from-blue-900 to-blue-800 py-16 relative overflow-hidden">
+      <section className="bg-gradient-to-r from-blue-950 to-blue-950 py-16 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-orange-500 -translate-x-1/2 -translate-y-1/2"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-orange-500 translate-x-1/2 translate-y-1/2"></div>
@@ -24,17 +45,26 @@ const Newsletter = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-6">
               <h2 className="text-2xl font-bold text-white mb-2">
-                Are you a budding footballer?
+                Invite Your Friends to Spives
               </h2>
               <p className="text-blue-100 text-lg mb-6">
-                Get discovered by top clubs and coaches worldwide. Join thousands of players who've advanced their careers with Spives.
+                Share Spives with friends and earn rewards when they join. Help grow the football community together.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center transition-colors">
-                  Get Started <ArrowRight size={16} className="ml-2" />
-                </button>
-                <button className="bg-transparent border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-900 transition-all">
-                  Learn More
+                <button 
+                  onClick={handleReferralClick}
+                  className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center transition-colors"
+                >
+                  {copied ? (
+                    <>
+                      <CheckCircle size={16} className="mr-2" />
+                      Copied to Clipboard!
+                    </>
+                  ) : (
+                    <>
+                      Refer a Friend <ArrowRight size={16} className="ml-2" />
+                    </>
+                  )}
                 </button>
               </div>
             </div>

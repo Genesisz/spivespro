@@ -11,7 +11,7 @@ interface DragDropUploadProps {
 
 const DragDropUpload: React.FC<DragDropUploadProps> = ({ 
   onFileSelect, 
-  maxSizeKb = 105, 
+  maxSizeKb = 3072, 
   acceptedFileTypes = ['image/jpeg', 'image/png'] 
 }) => {
   const [dragActive, setDragActive] = useState(false);
@@ -86,6 +86,9 @@ const DragDropUpload: React.FC<DragDropUploadProps> = ({
     .map(type => type.split('/')[1].toUpperCase())
     .join(', ');
 
+  // Format max size for display in MB if >= 1024kb
+  const formattedMaxSize = maxSizeKb >= 1024 ? `${(maxSizeKb / 1024).toFixed(0)}MB` : `${maxSizeKb}kb`;
+
   return (
     <div 
       className={`w-full bg-white rounded-2xl p-12 flex flex-col items-center justify-center relative ${
@@ -120,7 +123,7 @@ const DragDropUpload: React.FC<DragDropUploadProps> = ({
       <Image src={`/images/Group 3 from Spives Web App.svg`} alt="hero background" className='my-12' width={40} height={40} />
       
       <p className="text-gray-800 text-lg font-medium mb-2">Choose a file or drag & drop it here</p>
-      <p className="text-gray-500 text-sm mb-20">{formattedAcceptedTypes} up to {maxSizeKb}kb</p>
+      <p className="text-gray-500 text-sm mb-20">{formattedAcceptedTypes} up to {formattedMaxSize}</p>
       
       <input
         ref={inputRef}

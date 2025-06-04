@@ -90,7 +90,7 @@ const App = () => {
   return (
     <div className="flex flex-col min-h-fit bg-white font-sans">
       {/* Main Content */}
-      <main className="flex-1 container mx-auto px-2 sm:px-4 py-8 sm:py-20 w-full">
+      <main className="flex-1 container mx-auto px-2 sm:px-4 py-8 sm:py-32 w-full">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
           {/* Left Column - Profile Picture */}
           <div className="md:col-span-3 mb-6 md:mb-0 flex justify-center items-center">
@@ -122,7 +122,7 @@ const App = () => {
                   {player.username}
                 </h1>
                 <div className="">
-                  <span className="text-lg">🌍</span>
+                  <Image src="/images/dashboard/Nigeria Icon.png" width={40} height={20} alt=""/>
                 </div>
               </div>
 
@@ -278,11 +278,11 @@ const FootballField = ({ positions }: { positions: string[] }) => {
         </div>
       )}
 
-      {positions.includes("LWB") && (
+      {/* {positions.includes("LWB") && (
         <div className="absolute bottom-1/4 left-1/3 transform -translate-y-1/2 w-10 h-10 bg-blue-brand-800 text-white rounded-full flex items-center justify-center font-bold text-sm border-2 border-white shadow-md">
           LWB
         </div>
-      )}
+      )} */}
 
       {positions.includes("CB") && (
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-blue-brand-700 text-white rounded-full flex items-center justify-center font-bold text-xs border-2 border-white shadow-md">
