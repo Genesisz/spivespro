@@ -84,10 +84,6 @@ const GalleryPage = () => {
             <ArrowLeft size={20} />
             Back
           </button>
-          <div className="flex items-center gap-2">
-            <ImageIcon size={24} className="text-blue-950" />
-            <h1 className="text-2xl font-bold text-blue-950">Gallery & Social Media</h1>
-          </div>
         </div>
       </div>
 

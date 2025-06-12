@@ -5,7 +5,7 @@ import { useUser } from "@/lib/useUser";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
-
+import Link from "next/link";
 // Define TypeScript interfaces
 interface PlayerData {
   username: string;
@@ -99,7 +99,7 @@ const Navbar = () => {
   return (
     <header className="border-b border-gray-200 bg-white sticky top-0 z-100">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image
             src="/logo/Spiveslogo coloured.svg"
             alt="Spives Logo"
@@ -107,11 +107,10 @@ const Navbar = () => {
             height={50}
             className="h-6 border w-auto"
           />
-        </div>
+        </Link>
         
         <div className="flex items-center gap-10">
           <nav className="hidden md:flex items-center space-x-8">
-          <NavLink text="Talents" />
           <NavLink
             text="Logout"
             onClick={() => signOut({ callbackUrl: "/login" })}
