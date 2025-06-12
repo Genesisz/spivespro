@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { FileText, ImageIcon } from "lucide-react";
 import { useUser } from "../../lib/useUser";
 import { useRouter } from "next/navigation";
@@ -159,7 +159,11 @@ const App = () => {
                 icon={<FileText size={20} className="sm:w-6 sm:h-6" />}
                 text="View Health Report"
               />
-              <ActionButton icon={<ImageIcon size={20} className="sm:w-6 sm:h-6" />} text="Gallery" />
+              <ActionButton 
+                icon={<ImageIcon size={20} className="sm:w-6 sm:h-6" />} 
+                text="Gallery" 
+                onClick={() => router.push('/dashboard/gallery')}
+              />
             </div>
           </div>
 
@@ -231,11 +235,16 @@ const PositionBadge = ({
 const ActionButton = ({
   icon,
   text,
+  onClick,
 }: {
   icon: React.ReactNode;
   text: string;
+  onClick?: () => void;
 }) => (
-  <button className="w-full flex flex-col items-center justify-center space-y-1 sm:space-y-2 py-2 sm:py-4 shadow-sm rounded-lg hover:bg-gray-50 transition-all">
+  <button 
+    className="w-full flex flex-col items-center justify-center space-y-1 sm:space-y-2 py-2 sm:py-4 shadow-sm rounded-lg hover:bg-gray-50 transition-all"
+    onClick={onClick}
+  >
     <span className="text-xs font-[400] mb-1 text-blue-950">{text}</span>
     {icon}
   </button>

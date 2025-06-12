@@ -108,16 +108,16 @@ const Navbar = () => {
             className="h-6 border w-auto"
           />
         </div>
-        <nav className="hidden md:flex items-center space-x-8">
-          <NavLink text="Clubs" />
-          <NavLink text="Coaches" />
+        
+        <div className="flex items-center gap-10">
+          <nav className="hidden md:flex items-center space-x-8">
           <NavLink text="Talents" />
           <NavLink
             text="Logout"
             onClick={() => signOut({ callbackUrl: "/login" })}
           />
         </nav>
-        <div className="flex items-center">
+
           <div className="flex items-center">
             <div className="h-10 w-10 rounded-full bg-gray-200 overflow-hidden mr-2 flex items-center justify-center">
               {player.uploadedImage ? (

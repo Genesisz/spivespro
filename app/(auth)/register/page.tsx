@@ -203,6 +203,7 @@ const CreateProfilePage = () => {
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Passwords do not match';
     }
+    
     return newErrors;
   };
 
@@ -437,6 +438,7 @@ const CreateProfilePage = () => {
                 onChange={handleChange}
                 error={errors.position}
               />
+              
               <FormInput
                 label="Create Password"
                 type="password"

@@ -21,6 +21,13 @@ export interface AppUser {
   step?: number;
   createdAt?: string;
   updatedAt?: string;
+  socials?: {
+    instagram?: string;
+    twitter?: string;
+    facebook?: string;
+    linkedin?: string;
+    tiktok?: string;
+  };
   [key: string]: any;
 }
 
