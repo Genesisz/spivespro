@@ -6,7 +6,6 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { id, uploadedImageUrl, uploadedImagePublicId, uploadedFileName } = body;
-    console.log({ id, uploadedImageUrl, uploadedImagePublicId, uploadedFileName });
 
     // Input validation - only require id and image URL
     if (!id) {

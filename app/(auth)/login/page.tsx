@@ -21,7 +21,6 @@ const LoginPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({email, password})
     setLoadingLocal(true);
     setError('');
     const res = await signIn('credentials', {
@@ -30,11 +29,9 @@ const LoginPage: React.FC = () => {
       password,
       callbackUrl: '/dashboard',
     });
-    console.log({res})
     setLoadingLocal(false);
     if (res?.error) {
       setError(res.error);
-      console.log({res})
     } else if (res?.ok) {
       window.location.href = '/dashboard';
     }

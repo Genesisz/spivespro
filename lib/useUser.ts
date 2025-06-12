@@ -33,7 +33,6 @@ export interface AppUser {
 
 export function useUser() {
   const { data, status } = useSession();
-  console.log({status, data})
   return {
     user: (data?.user as AppUser) ?? null,
     loading: status === 'loading',

@@ -93,8 +93,6 @@ const PositionSelectionPage = () => {
       setError('Please select exactly 4 positions to continue');
       return;
     }
-    // Save selected positions (to state, API, or localStorage)
-    console.log('Selected positions:', selectedPositions);
     // Navigate to next page
     router.push('/create-profile');
   };
