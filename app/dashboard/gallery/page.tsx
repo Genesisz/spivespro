@@ -4,9 +4,11 @@ import { Instagram, Twitter, Facebook, Linkedin, Edit, Save, X, Music, ArrowLeft
 import { useUser } from "../../../lib/useUser";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 const GalleryPage = () => {
   const { user, loading, authenticated } = useUser();
+  const { update } = useSession();
   const router = useRouter();
   
   // Social media state
@@ -19,6 +21,19 @@ const GalleryPage = () => {
   });
   const [isEditingSocials, setIsEditingSocials] = useState(false);
   const [socialLoading, setSocialLoading] = useState(false);
+
+  // Update socials state when user data changes
+  useEffect(() => {
+    if (user?.socials) {
+      setSocials({
+        instagram: user.socials.instagram || '',
+        twitter: user.socials.twitter || '',
+        facebook: user.socials.facebook || '',
+        linkedin: user.socials.linkedin || '',
+        tiktok: user.socials.tiktok || ''
+      });
+    }
+  }, [user?.socials]);
 
 
   // Social media update function
@@ -37,6 +52,8 @@ const GalleryPage = () => {
         const data = await response.json();
         setSocials(data.socials);
         setIsEditingSocials(false);
+        // Refresh the session to get updated user data
+        await update();
       } else {
         console.error('Failed to update social media');
       }
