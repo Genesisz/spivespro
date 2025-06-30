@@ -2,14 +2,14 @@
 import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { 
   User, 
   Mail, 
   Calendar, 
   Phone, 
-  Globe, 
-  MapPin, 
+  Globe,
   Users, 
   AtSign, 
   Map, 
@@ -119,6 +119,10 @@ interface UploadingFile {
   public_id?: string;
 }
 
+interface ApiError extends Error {
+  message: string;
+}
+
 const CreateProfilePage = () => {
   const router = useRouter();
   const { authenticated, loading } = useUser();
@@ -153,7 +157,7 @@ const CreateProfilePage = () => {
 
   useEffect(() => {
     if (!loading && authenticated) {
-      router.push('/dashboard');
+      router.push('/profile');
     }
   }, [authenticated, loading, router]);
 
@@ -234,8 +238,9 @@ const CreateProfilePage = () => {
       if (!res.ok) throw new Error(data.error || 'Failed to register');
       setRegistrationId(data.id);
       setStep(1); // Proceed to position selection
-    } catch (err: any) {
-      setApiError(err.message);
+    } catch (err: unknown) {
+      const error = err as ApiError;
+      setApiError(error.message);
     } finally {
       setLoadingLocal(false);
     }
@@ -257,8 +262,9 @@ const CreateProfilePage = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Failed to save step 3');
       setStep(2); // Go to image upload step
-    } catch (err: any) {
-      setApiError(err.message);
+    } catch (err: unknown) {
+      const error = err as ApiError;
+      setApiError(error.message);
     } finally {
       setLoadingLocal(false);
     }
@@ -297,10 +303,11 @@ const CreateProfilePage = () => {
       
       if (!res.ok) throw new Error(data.error || 'Failed to save step 4');
       
-      router.push('/dashboard');
-    } catch (err: any) {
-      console.error('Step 4 error:', err);
-      setApiError(err.message);
+      router.push('/profile');
+    } catch (err: unknown) {
+      const error = err as ApiError;
+      console.error('Step 4 error:', error);
+      setApiError(error.message);
     } finally {
       setLoadingLocal(false);
     }
@@ -534,10 +541,13 @@ const CreateProfilePage = () => {
     <div className="min-h-screen w-full relative flex justify-center items-center px-4 py-10">
       {/* Background Image */}
       <div className="absolute top-0 left-0 w-full h-full -z-10">
-        <img
+        <Image
           src="/images/landing-page/hero-bg.png"
           alt="hero background"
-          className="w-full h-full object-cover"
+          className="object-cover"
+          fill
+          priority
+          quality={75}
         />
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#03033E]/80 to-[#000066]/80" />
       </div>

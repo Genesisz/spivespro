@@ -13,8 +13,16 @@ export interface AppUser {
   club?: string;
   phoneNumber?: string;
   selectedPositions?: string[];
-  stats?: { tops: number; matchesPlayed: number; minutesPlayed: number };
-  team?: { name: string; logo: string };
+  stats?: { 
+    tops: number; 
+    matchesPlayed: number; 
+    minutesPlayed: number;
+    rating?: number;
+  };
+  team?: { 
+    name: string; 
+    logo: string;
+  };
   uploadedImageUrl?: string;
   uploadedImagePublicId?: string;
   uploadedFileName?: string;
@@ -28,7 +36,9 @@ export interface AppUser {
     linkedin?: string;
     tiktok?: string;
   };
-  [key: string]: any;
+  role?: 'admin' | 'coach' | 'player';
+  isProfileComplete?: boolean;
+  scoutingStatus?: 'active' | 'inactive' | 'pending';
 }
 
 export function useUser() {

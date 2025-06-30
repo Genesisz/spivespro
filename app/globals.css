@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 @font-face {
@@ -9,7 +9,10 @@
   font-display: swap;
 }
 body {
-    font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+.montserrat {
+  font-family: "Montserrat", sans-serif;
 }
 .adumu {
   font-family: "Adumu", sans-serif;

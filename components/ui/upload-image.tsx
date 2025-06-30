@@ -115,7 +115,7 @@ const UploadPhotoPage: React.FC = () => {
 
   const handleComplete = () => {
     // Handle completion - in a real app this would navigate to the next step
-    router.push('/dashboard');
+    router.push('/profile');
   };
 
   return (

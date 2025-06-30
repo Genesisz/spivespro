@@ -6,8 +6,8 @@ export async function middleware(req: NextRequest) {
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
   const { pathname } = req.nextUrl;
 
-  // Protect /dashboard and its subroutes
-  if (pathname.startsWith('/dashboard')) {
+  // Protect /profile and its subroutes
+  if (pathname.startsWith('/profile')) {
     if (!token) {
       const loginUrl = req.nextUrl.clone();
       loginUrl.pathname = '/login';
@@ -19,7 +19,7 @@ export async function middleware(req: NextRequest) {
   // Redirect authenticated users away from /login and /register
   if (token && (pathname === '/login' || pathname === '/register')) {
     const dashboardUrl = req.nextUrl.clone();
-    dashboardUrl.pathname = '/dashboard';
+    dashboardUrl.pathname = '/profile';
     return NextResponse.redirect(dashboardUrl);
   }
 
@@ -27,5 +27,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/login', '/register'],
+  matcher: ['/profile/:path*', '/login', '/register'],
 }; 

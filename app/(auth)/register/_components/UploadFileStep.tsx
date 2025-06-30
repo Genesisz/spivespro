@@ -84,7 +84,6 @@ const UploadFileStep: React.FC<UploadFileStepProps> = ({ uploadedFile, setUpload
             size={uploadedFile.size}
             progress={uploadedFile.progress}
             status={uploadedFile.status as FileStatus}
-            type={uploadedFile.type}
           />
           {uploadedFile.status === 'error' && (
             <div className="text-red-500 text-sm mt-2">File size should not exceed 20MB.</div>

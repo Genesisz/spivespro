@@ -1,15 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { Instagram, Twitter, Facebook, Linkedin, Edit, Save, X, Music, ArrowLeft, ImageIcon } from "lucide-react";
+import { Instagram, Twitter, Facebook, Linkedin, Edit, Save, X, Music } from "lucide-react";
 import { useUser } from "../../../lib/useUser";
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 
 const GalleryPage = () => {
   const { user, loading, authenticated } = useUser();
   const { update } = useSession();
-  const router = useRouter();
   
   // Social media state
   const [socials, setSocials] = useState({
@@ -74,46 +72,8 @@ const GalleryPage = () => {
 
   return (
     <div className="flex flex-col min-h-fit bg-white font-sans">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-200 p-4">
-        <div className="container mx-auto flex items-center gap-4">
-          <button
-            onClick={() => router.back()}
-            className="flex items-center gap-2 text-blue-950 hover:text-blue-800 transition-colors"
-          >
-            <ArrowLeft size={20} />
-            Back
-          </button>
-        </div>
-      </div>
-
       {/* Main Content */}
       <main className="flex-1 container mx-auto px-2 sm:px-4 py-8 w-full">
-        {/* Gallery Section */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-6 mb-8">
-          <h2 className="text-xl font-semibold text-blue-950 mb-4">Photo Gallery</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {/* Placeholder for gallery items */}
-            <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-              <ImageIcon size={32} className="text-gray-400" />
-            </div>
-            <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-              <ImageIcon size={32} className="text-gray-400" />
-            </div>
-            <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-              <ImageIcon size={32} className="text-gray-400" />
-            </div>
-            <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-              <ImageIcon size={32} className="text-gray-400" />
-            </div>
-          </div>
-          <div className="mt-4 text-center">
-            <button className="px-4 py-2 bg-blue-950 text-white rounded-lg hover:bg-blue-900 transition-colors">
-              Upload Photos
-            </button>
-          </div>
-        </div>
-
         {/* Social Media Section */}
         <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-6">
           <div className="flex justify-between items-center mb-4">
@@ -224,7 +184,7 @@ const SocialMediaInput = ({
   isEditing: boolean;
   placeholder: string;
 }) => (
-  <div className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors">
+  <div className="flex items-center gap-3 p-3 rounded-lg border border-black hover:border-gray-300 transition-colors">
     <div className="text-blue-950">{icon}</div>
     <div className="flex-1">
       <div className="text-xs font-medium text-gray-500 mb-1">{label}</div>

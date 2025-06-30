@@ -125,7 +125,6 @@ const UploadImageStep: React.FC<UploadImageStepProps> = ({ uploadedImage, setUpl
             size={uploadedImage.size}
             progress={uploadedImage.progress}
             status={uploadedImage.status as FileStatus}
-            type={uploadedImage.type}
           />
           {uploadedImage.status === 'error' && (
             <div className="text-red-500 text-sm mt-2">

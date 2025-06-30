@@ -42,15 +42,11 @@ const LandingPage = () => {
       } else {
         setErrorMessage("Something went wrong. Please try again.");
       }
-    } catch (error) {
+    } catch {
       setErrorMessage("Network error. Please try again later.");
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleButtonClick = () => {
-    handleSubmit(new Event("submit") as any);
   };
 
   return (
@@ -77,7 +73,7 @@ const LandingPage = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            We're <br />{" "}
+            We&apos;re <br />{" "}
             <span className="text-white leading-[4rem] md:leading-[8rem] text-[4rem] md:text-[8rem] adumu">
               building <br /> something
             </span>{" "}
@@ -90,14 +86,14 @@ const LandingPage = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <p className="text-white text-[16px] mt-8 font-montserrat font-[700]">
-              Can't wait to see what's next?
+              Can&apos;t wait to see what&apos;s next?
             </p>
             <p className="text-white text-[16px] font-montserrat font-[700]">
               Join the waitlist now and be among the first to exprience the
               future when we launch.
             </p>
             <p className="text-white text-[16px] font-montserrat font-[700]">
-              Don't miss out - secure your{" "}
+              Don&apos;t miss out - secure your{" "}
               <span className="text-[#FF9434]">sport</span> today!
             </p>
           </motion.div>
@@ -172,19 +168,19 @@ const LandingPage = () => {
           <p className="text-[17px] mt-4 text-white text-start md:w-6/12 font-[600]">
             We designed the player profile cards because every young talent
             deserves to be seen. In many African countries, limited resources
-            and lack of exposure hinder young athletes' dreams. Our profile
+            and lack of exposure hinder young athletes&apos; dreams. Our profile
             cards provide a platform for showcasing their skills, connecting
             them with coaches, scouts, and clubs worldwide. At Spives, we
-            believe every child's dream of becoming a football star should be
+            believe every child&apos;s dream of becoming a football star should be
             within reach.
             <br />
             <br />
             We designed the player profile cards because every young talent
             deserves to be seen. In many African countries, limited resources
-            and lack of exposure hinder young athletes' dreams. Our profile
+            and lack of exposure hinder young athletes&apos; dreams. Our profile
             cards provide a platform for showcasing their skills, connecting
             them with coaches, scouts, and clubs worldwide. At Spives, we
-            believe every child's dream of becoming a football star should be
+            believe every child&apos;s dream of becoming a football star should be
             within reach.
           </p>
           <motion.img

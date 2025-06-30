@@ -1,51 +1,10 @@
-// import React from 'react';
-// const Footer = () => {
-//   return (
-//     <footer className="w-full px-[1rem] md:px-[2rem] py-[1.5rem] text-start">
-//       <div className="flex flex-col md:flex-row gap-6 justify-between text-[12px]">
-//         <div className="underline">
-//           <h1 className=" font-[600]">Stay Informed. Join Now</h1>
-//           <p>Sign up for our newsletter to receive the latest updates</p>
-//         </div>
-//         <div>
-//           <div className="flex gap-2">
-//             <input
-//               placeholder="Your Email Address"
-//               className="border  border-gray-600 text-gray-600 placeholder:text-gray-600 py-1 px-2 min-w-[15rem]"
-//             />
-//             <button className="border border-gray-600 px-4 py-1">
-//               Subscribe
-//             </button>
-//           </div>
-//           <p className="mt-2 text-[10px] font-[600]">
-//             By subscribing, you have agreed to our Privacy Policy.
-//           </p>
-//         </div>
-//       </div>
-//       <hr className="my-6 border-gray-600" />
-//       <div className='flex justify-between items-center'>
-//         <img
-//           src="/images/spives.png"
-//           alt="spives logo"
-//           className="h-6 w-auto object-contain"
-//         />
-
-//         <p className="underline text-[11px]">@2024 Spives. All rights reserved.</p>
-//       </div>
-//     </footer>
-//   );
-// };
-
-// export default Footer;
-
-// components/Footer.tsx
 import Link from "next/link";
 import Image from "next/image";
 import { Instagram, Linkedin, Youtube, Facebook } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#03033E] text-white py-16">
+    <footer className="bg-[#03033E] text-white py-16 montserrat">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="flex flex-col lg:flex-row justify-between gap-10">
           {/* Logo and Contact Info */}
@@ -108,29 +67,6 @@ const Footer = () => {
           </div>
 
           <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-20">
-            {/* Solutions */}
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Solutions</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="/solutions/reduce"
-                    className="text-gray-300 hover:text-amber-500 transition-colors duration-300 font-[300]"
-                  >
-                    Reduce
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/solutions/transition"
-                    className="text-gray-300 hover:text-amber-500 transition-colors duration-300 font-[300]"
-                  >
-                    Transition
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
             {/* Resources */}
             <div>
               <h3 className="text-xl font-semibold mb-4">Resources</h3>

@@ -7,7 +7,7 @@ interface FileUploadProgressProps {
   size: number;
   progress: number;
   status: 'idle' | 'uploading' | 'error' | 'success';
-  type: string;
+  // type: string;
 }
 
 const FileUploadProgress: React.FC<FileUploadProgressProps> = ({
@@ -15,7 +15,7 @@ const FileUploadProgress: React.FC<FileUploadProgressProps> = ({
   size,
   progress,
   status,
-  type
+  // type
 }) => {
   const formatFileSize = (bytes: number): string => {
     if (bytes < 1024) return `${bytes} B`;

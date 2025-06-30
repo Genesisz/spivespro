@@ -62,7 +62,7 @@ const UploadPhotoPage: React.FC = () => {
     setIsComplete(true);
     // Simulate redirect after completion
     setTimeout(() => {
-      router.push('/dashboard');
+      router.push('/profile');
     }, 1500);
   };
 
@@ -127,7 +127,6 @@ const UploadPhotoPage: React.FC = () => {
                 size={uploadingFile.size}
                 progress={uploadingFile.progress}
                 status={uploadingFile.status}
-                type={uploadingFile.type}
               />
               {uploadingFile.status === 'error' && (
                 <div className="text-red-500 text-sm mt-2">

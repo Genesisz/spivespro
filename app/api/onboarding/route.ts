@@ -4,7 +4,7 @@ import { google } from 'googleapis';
 
 export async function POST(request: Request) {
   try {
-    const { timestamp, email } =
+    const { email } =
       await request.json();
     console.log({email})
     // Input validation

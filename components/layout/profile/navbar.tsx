@@ -146,15 +146,6 @@ const Navbar = () => {
   );
 };
 
-const Logo = () => (
-  <div className="flex items-center">
-    <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center mr-2">
-      <div className="w-6 h-6 rounded-full border-2 border-white"></div>
-    </div>
-    <span className="text-blue-900 font-bold text-xl">spives</span>
-  </div>
-);
-
 const NavLink = ({ text, onClick }: { text: string; onClick?: () => void }) => (
   <a
     href="#"

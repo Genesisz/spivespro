@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle } from 'lucide-react';
 
 interface Position {
   code: string;

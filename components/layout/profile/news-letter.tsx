@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react'
-import { Instagram, Twitter, Facebook, Linkedin, Mail, ArrowRight, CheckCircle } from 'lucide-react'
+import { ArrowRight, CheckCircle } from 'lucide-react'
 
 const Newsletter = () => {
     const [email, setEmail] = useState('');
@@ -22,7 +22,7 @@ const Newsletter = () => {
         await navigator.clipboard.writeText(referralLink);
         setCopied(true);
         setTimeout(() => setCopied(false), 3000);
-      } catch (err) {
+      } catch {
         // Fallback for browsers that don't support clipboard API
         const textArea = document.createElement('textarea');
         textArea.value = referralLink;

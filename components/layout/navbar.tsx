@@ -2,10 +2,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useUser } from "@/lib/useUser";
+import { signOut } from "next-auth/react";
+
 const links = [
   {
     name: "Talents",
-    href: "/",
+    href: "/talents",
   },
   {
     name: "Pricing",
@@ -15,11 +18,22 @@ const links = [
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const { user, authenticated, loading } = useUser();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const toggleUserMenu = () => {
+    setIsUserMenuOpen(!isUserMenuOpen);
+  };
+
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: '/' });
+  };
+
+  const userDisplayName = user?.nickname || user?.fullName || user?.email?.split('@')[0] || 'User';
   return (
     <div className="py-2 container mx-auto px-4">
       <div className="flex justify-between items-center">
@@ -45,18 +59,69 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          <Link
-            href="/login"
-            className="bg-blue-950 text-white px-4 py-2 rounded-sm"
-          >
-            Login
-          </Link>
-          <Link
-            href="/register"
-            className="bg-orange-400 text-black px-4 py-2 rounded-sm"
-          >
-            Get Started
-          </Link>
+          
+          {!loading && (
+            <>
+              {authenticated ? (
+                <div className="relative">
+                  <button
+                    onClick={toggleUserMenu}
+                    className="flex items-center gap-2 bg-blue-950 text-white px-4 py-2 rounded-sm"
+                  >
+                    <span>{userDisplayName}</span>
+                    <svg
+                      className={`w-4 h-4 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                  {isUserMenuOpen && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                      <Link
+                        href="/profile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsUserMenuOpen(false)}
+                      >
+                        Profile
+                      </Link>
+                      {/* <Link
+                        href="/dashboard"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsUserMenuOpen(false)}
+                      >
+                        Dashboard
+                      </Link> */}
+                      <button
+                        onClick={handleSignOut}
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Sign out
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    className="bg-blue-950 text-white px-4 py-2 rounded-sm"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    href="/register"
+                    className="bg-orange-400 text-black px-4 py-2 rounded-sm"
+                  >
+                    Get Started
+                  </Link>
+                </>
+              )}
+            </>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -120,18 +185,45 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <Link
-                href="/login"
-                className="bg-blue-950 text-white px-4 py-2 rounded-sm"
-              >
-                Login
-              </Link>
-              <Link
-                href="/register"
-                className="bg-orange-400 text-black px-4 py-2 rounded-sm"
-              >
-                Get Started
-              </Link>
+              
+              {!loading && (
+                <>
+                  {authenticated ? (
+                    <>
+                      <Link
+                        href="/profile"
+                        className="bg-blue-950 text-white px-4 py-2 rounded-sm text-center"
+                        onClick={toggleMenu}
+                      >
+                        Dashboard
+                      </Link>
+                      <button
+                        onClick={handleSignOut}
+                        className="bg-gray-200 text-gray-800 px-4 py-2 rounded-sm w-full"
+                      >
+                        Sign out
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <Link
+                        href="/login"
+                        className="bg-blue-950 text-white px-4 py-2 rounded-sm"
+                        onClick={toggleMenu}
+                      >
+                        Login
+                      </Link>
+                      <Link
+                        href="/register"
+                        className="bg-orange-400 text-black px-4 py-2 rounded-sm"
+                        onClick={toggleMenu}
+                      >
+                        Get Started
+                      </Link>
+                    </>
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>

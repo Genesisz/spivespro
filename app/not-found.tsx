@@ -1,10 +1,12 @@
 import React from 'react';
-
+import Image from 'next/image';
 const NotFound = () => {
   return (
     <div className="h-screen w-screen flex justify-center items-center relative">
       <div className="absolute top-0 left-0 w-full h-full">
-        <img
+        <Image
+          width={1000}
+          height={1000}
           src="/images/landing-page/hero-bg.png"
           alt="hero background"
           className="w-full h-full object-cover"
@@ -21,7 +23,7 @@ const NotFound = () => {
             error
           </h1>
           <p className="text-white text-center text-[16px] mt-8 font-[700]">
-            page <span className='text-[#FF9434]'>"not found"</span> or has been moved to another link
+            page <span className='text-[#FF9434]'>&quot;not found&quot;</span> or has been moved to another link
           </p>
           <button className="bg-white mt-8 md:mt-4 text-black px-2 text-sm font-[600] py-1 rounded-sm hover:bg-opacity-90 transition-all">
             Go Home

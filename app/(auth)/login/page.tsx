@@ -4,6 +4,7 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@/lib/useUser';
 import Link from 'next/link';
+
 const LoginPage: React.FC = () => {
   const router = useRouter();
   const { authenticated, loading } = useUser();
@@ -15,7 +16,7 @@ const LoginPage: React.FC = () => {
   // Redirect if already logged in
   useEffect(() => {
     if (!loading && authenticated) {
-      router.push('/dashboard');
+      router.push('/profile');
     }
   }, [authenticated, loading, router]);
 
@@ -23,19 +24,25 @@ const LoginPage: React.FC = () => {
     e.preventDefault();
     setLoadingLocal(true);
     setError('');
-    const res = await signIn('credentials', {
-      redirect: false,
-      email,
-      password,
-      callbackUrl: '/dashboard',
-    });
-    setLoadingLocal(false);
-    if (res?.error) {
-      setError(res.error);
-    } else if (res?.ok) {
-      window.location.href = '/dashboard';
+    try {
+      const res = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
+        callbackUrl: '/profile',
+      });
+      
+      if (res?.error) {
+        setError(res.error);
+      } else if (res?.ok) {
+        window.location.href = '/profile';
+      }
+    } catch (err) {
+      console.log(err);
+      setError('An unexpected error occurred. Please try again.');
+    } finally {
+      setLoadingLocal(false);
     }
-    // Do not redirect here; let useEffect handle it
   };
 
   if (loading) {
@@ -44,16 +51,15 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="h-[100dvh] max-w-screen relative text-center overflow-x-hidden flex justify-center items-center">
-    <div className="absolute bottom-0 left-0 w-screen h-[140dvh]">
-      <img
-        src="/images/landing-page/hero-bg.png"
-        alt="hero background"
-        className="w-full h-full"
-      />
-    </div>
-    <div className="absolute top-0 left-0 w-screen h-[100dvh] bg-gradient-to-b from-[#03033E]/60 to-[#000066]/60" />
+      <div className="absolute bottom-0 left-0 w-screen h-[140dvh]">
+        <img
+          src="/images/landing-page/hero-bg.png"
+          alt="hero background"
+          className="w-full h-full"
+        />
+      </div>
+      <div className="absolute top-0 left-0 w-screen h-[100dvh] bg-gradient-to-b from-[#03033E]/60 to-[#000066]/60" />
 
-      
       <div className="w-full relative flex flex-col items-center justify-center rounded-lg shadow-xl z-10">
         <div className="p-8 max-w-xl w-[100%]">
           <div className="text-center mb-8">
@@ -65,7 +71,11 @@ const LoginPage: React.FC = () => {
           </div>
 
           <form onSubmit={handleSubmit} className='bg-white rounded-xl w-full p-4 md:p-10'>
-            {error && <div className="text-red-500 mb-4">{error}</div>}
+            {error && (
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm">
+                {error}
+              </div>
+            )}
             <div className="mb-4">
               <input
                 type="email"

@@ -1,8 +1,7 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { CheckCircle } from 'lucide-react';
 
 // Animation variants
 const containerVariants = {
@@ -104,7 +103,7 @@ const PositionSelectionPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full relative flex justify-center items-center px-4 py-10">
+    <div className="min-h-screen montserrat w-full relative flex justify-center items-center px-4 py-10">
       {/* Background Image */}
       <div className="absolute top-0 left-0 w-full h-full -z-10">
         <img

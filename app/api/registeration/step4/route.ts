@@ -2,6 +2,14 @@ import { NextRequest } from 'next/server';
 import { connectToDatabase } from '@/lib/db';
 import { ObjectId } from 'mongodb';
 
+interface RegistrationUpdateData {
+  step: number;
+  updatedAt: Date;
+  uploadedImageUrl?: string;
+  uploadedImagePublicId?: string;
+  uploadedFileName?: string;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -22,7 +30,7 @@ export async function POST(request: NextRequest) {
     const collection = db.collection('registrations');
     
     // Prepare update data
-    const updateData: any = {
+    const updateData: RegistrationUpdateData = {
       step: 4,
       updatedAt: new Date()
     };

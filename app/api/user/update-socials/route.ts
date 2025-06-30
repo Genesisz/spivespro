@@ -6,7 +6,6 @@ import { connectToDatabase } from '@/lib/db';
 export async function PATCH(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
-    console.log({session})
     
     if (!session || !session.user?.email) {
       return NextResponse.json(
@@ -16,7 +15,6 @@ export async function PATCH(request: NextRequest) {
     }
 
     const body = await request.json();
-    console.log({body})
     const { instagram, twitter, facebook, linkedin, tiktok } = body;
 
     // Validate URLs if provided
@@ -70,10 +68,11 @@ export async function PATCH(request: NextRequest) {
         tiktok: tiktok || ''
       }
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     console.error('Error updating socials:', error);
     return NextResponse.json(
-      { error: error.message || 'Failed to update social media' },
+      { error: errorMessage || 'Failed to update social media' },
       { status: 500 }
     );
   }

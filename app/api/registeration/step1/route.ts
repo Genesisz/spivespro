@@ -58,6 +58,7 @@ export async function POST(request: NextRequest) {
       foot,
       position,
       password: hashedPassword, // Store hashed password
+      role: 'user', // Default role for registrations
       createdAt: new Date(),
     });
 

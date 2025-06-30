@@ -1,6 +1,4 @@
 import { NextRequest } from 'next/server';
-import { connectToDatabase } from '@/lib/db';
-import { ObjectId } from 'mongodb';
 
 export async function POST(request: NextRequest) {
   try {
@@ -17,14 +15,6 @@ export async function POST(request: NextRequest) {
         { status: 400 },
       );
     }
-
-    const { db } = await connectToDatabase();
-    const collection = db.collection('registrations');
-    const result = await collection.updateOne(
-      { _id: new ObjectId(id) },
-      { $set: { step: 3, selectedPositions, updatedAt: new Date() } }
-    );
-
     return new Response(
       JSON.stringify({ message: 'Step 3 data saved', id }),
       { status: 201 },
