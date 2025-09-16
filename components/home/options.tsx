@@ -41,8 +41,20 @@ const features = [
 ];
 export default function FootballPlatformFeatures() {
   return (
-    <div className="bg-[#03033E] text-white h-fit min-h-screen overflow-hidden py-20 md:py-32 px-4 relative">
-      <div className="max-w-6xl mx-auto">
+    <div className="bg-[#03033E] text-white h-fit min-h-screen overflow-hidden pt-20 md:pt-32 pb-16 px-4 relative">
+      <div className="absolute top-0 left-0 w-screen h-full">
+        <Image
+          src="/img/HeroBG Image from Spives Web App (1).svg"
+          alt="hero background"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+      </div>
+      <div className="absolute top-0 left-0 w-screen h-full bg-gradient-to-b from-[#03033E]/60 to-[#000066]/60" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Header Section */}
         <div className="md:text-center mb-16">
           <h2 className="text-5xl md:text-4xl font-bold mb-4 adumu">
@@ -54,8 +66,8 @@ export default function FootballPlatformFeatures() {
           </p>
 
           <div className="flex md:justify-center">
-            <button className="bg-orange-400 hover:bg-orange-500 text-sm md:text-base  font-[300] md:font-[400] text-black py-2 md:py-3 px-4 md:px-8 rounded-md transition duration-200">
-              Get Started
+            <button className="bg-white text-sm md:text-base  font-[300] md:font-[400] text-black py-2 md:py-3 px-4 md:px-8 rounded-md transition duration-200">
+              Create a profile card
             </button>
           </div>
         </div>
@@ -76,17 +88,18 @@ export default function FootballPlatformFeatures() {
         </div>
 
         {/* Footer Section */}
-        <div className="flex flex-col lg:flex-row items- justify-between pt-8">
-          <div className="lg:w-1/2 mb-8 lg:mb-0">
+        <div className="flex flex-col relative lg:flex-row items- justify-between pt-16">
+          <div className="absolute top-0 bg-orange-800/20 w-[150vw] h-[40rem] -left-[15rem]"/>
+          <div className="lg:w-1/2 mb-8 lg:mb-0 relative z-10">
             <h2 className="text-4xl md:text-6xl font-bold adumu leading-tight">
-              The Dream starts
-              <br />
-              with a <span className="text-orange-400">Kick.</span>
+              The Dream <br /> starts
+              
+              with <br /> a <span className="text-orange-400">Kick.</span>
             </h2>
           </div>
         </div>
       </div>
-      <div className="flex justify-end absolute right-0 -bottom-52 md:-bottom-72 items-end h-fit ml-auto">
+      <div className="hidden lg:flex justify-end absolute right-0 -bottom-52 md:-bottom-72 items-end h-fit ml-auto">
         <Image
           width={1000}
           height={500}

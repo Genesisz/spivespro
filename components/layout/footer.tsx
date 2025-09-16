@@ -4,8 +4,16 @@ import { Instagram, Linkedin, Youtube, Facebook } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#03033E] text-white py-16 montserrat">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <footer className="bg-[#03033E] text-white py-16 relative">
+      <Image
+        src="/img/Spives Web App Image 25 (1).svg"
+        alt="hero background"
+        fill
+        priority
+        className="object-cover object-center opacity-20"
+        sizes="100vw"
+      />
+      <div className="max-w-7xl relative z-10 mx-auto px-4 md:px-6">
         <div className="flex flex-col lg:flex-row justify-between gap-10">
           {/* Logo and Contact Info */}
           <div className="space-y-6">
@@ -14,9 +22,9 @@ const Footer = () => {
                 <Image
                   src="/logo/logo.svg"
                   alt="Spives Logo"
-                  width={150}
+                  width={100}
                   height={50}
-                  className="h-10 w-auto"
+                  className="h-8 w-auto"
                 />
               </div>
             </Link>
@@ -69,11 +77,25 @@ const Footer = () => {
           <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-20">
             {/* Resources */}
             <div>
+              <h3 className="text-xl font-semibold mb-4">Solution</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/case-studies"
+                    className="text-gray-300 hover:text-amber-500 transition-colors duration-300 font-[300]"
+                  >
+                    Technology
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            {/* Resources */}
+            <div>
               <h3 className="text-xl font-semibold mb-4">Resources</h3>
               <ul className="space-y-2">
                 <li>
                   <Link
-                    href="/resources/case-studies"
+                    href="/case-studies"
                     className="text-gray-300 hover:text-amber-500 transition-colors duration-300 font-[300]"
                   >
                     Case Studies
@@ -89,7 +111,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="/resources/webinars"
+                    href="/webinars"
                     className="text-gray-300 hover:text-amber-500 transition-colors duration-300 font-[300]"
                   >
                     Webinars
@@ -136,7 +158,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="/privacy"
+                    href="/privacy-policy"
                     className="text-gray-300 hover:text-amber-500 transition-colors duration-300 font-[300]"
                   >
                     Privacy Policy

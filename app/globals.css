@@ -1,22 +1,103 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Creato";
+  src: url("/creato/CreatoDisplay-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Creato";
+  src: url("/creato/CreatoDisplay-RegularItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Creato";
+  src: url("/creato/CreatoDisplay-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Creato";
+  src: url("/creato/CreatoDisplay-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Creato";
+  src: url("/creato/CreatoDisplay-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Creato";
+  src: url("/creato/CreatoDisplay-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Creato";
+  src: url("/creato/CreatoDisplay-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Creato";
+  src: url("/creato/CreatoDisplay-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Creato";
+  src: url("/creato/CreatoDisplay-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Creato";
+  src: url("/creato/CreatoDisplay-BlackItalic.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
 
 @font-face {
   font-family: "Adumu";
   src: url("/font/adumu.ttf") format("truetype");
-  /* font-weight: 900; */
   font-style: normal;
   font-display: swap;
 }
+
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Creato", sans-serif;
 }
-.montserrat {
-  font-family: "Montserrat", sans-serif;
+
+.creato {
+  font-family: "Creato", sans-serif;
 }
+
 .adumu {
   font-family: "Adumu", sans-serif;
-    letter-spacing: 2px; /* adjust as needed */
+  letter-spacing: 2px; /* adjust as needed */
 }
 
 @keyframes border-spin {
@@ -32,7 +113,7 @@ body {
   border-radius: 1rem; /* rounded-2xl */
   background-image: linear-gradient(
     to bottom,
-    #334155,
+    #5f371a,
     #1e293b
   ); /* from-slate-700 to-slate-800 */
 }
@@ -46,8 +127,8 @@ body {
   height: 150%;
   width: 150%;
   background: conic-gradient(
-    rgba(218, 206, 212, 0.4) 0deg,
-    rgba(132, 136, 252, 0.4) 0deg,
+    rgba(85, 48, 100, 0.4) 0deg,
+    rgba(34, 160, 110, 0.4) 0deg,
     transparent 80deg
   );
   animation: border-spin 7s linear infinite;

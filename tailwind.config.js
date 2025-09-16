@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         adumu: ["Adumu"],
+        creato: ["Creato", "sans-serif"],
       },
       colors: {
         primary: {
@@ -29,4 +30,4 @@ module.exports = {
     },
   },
   plugins: [],
-}; 
+};
