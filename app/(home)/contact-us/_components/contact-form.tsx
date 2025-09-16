@@ -79,7 +79,7 @@ const ContactForm: React.FC = () => {
                             <div className="mb-8">
 
                                 <p className="text-white/80 text-sm sm:text-base lg:text-lg leading-relaxed">
-                                    Let's Kick Off the Conversation – we're ready to listen,
+                                    Let&apos;s Kick Off the Conversation – we&apos;re ready to listen,
                                     <span className="hidden sm:inline"><br /></span>
                                     <span className="sm:hidden">{" "}</span>
                                     support, and help you shine

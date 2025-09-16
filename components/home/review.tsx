@@ -116,7 +116,7 @@ const Review: React.FC = () => {
           {filteredReviews.map((review, index) => (
             <div key={index} className="bg-orange-400 rounded-lg shadow-md p-2 mx-auto w-full max-w-sm">
               <p className="text-gray-800 bg-white rounded-md h-[10rem] sm:h-[11rem] lg:h-[12rem] flex items-center px-3 sm:px-4 text-sm sm:text-base leading-relaxed">
-                "{review.review}"
+                &ldquo;{review.review}&rdquo;
               </p>
               <div className="flex items-center mt-3 sm:mt-4">
                 <Image
