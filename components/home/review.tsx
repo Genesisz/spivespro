@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from "react";
-import Image from "next/image";
 
 // TypeScript interfaces
 interface Review {
@@ -119,13 +118,13 @@ const Review: React.FC = () => {
                 &ldquo;{review.review}&rdquo;
               </p>
               <div className="flex items-center mt-3 sm:mt-4">
-                <Image
+                {/* <Image
                   src={review.image}
                   alt={review.name}
                   width={50}
                   height={50}
                   className="w-8 h-8 sm:w-10 sm:h-10 rounded-full mr-3 sm:mr-4 border object-cover"
-                />
+                /> */}
                 <div>
                   <h3 className="text-sm sm:text-md font-[500] text-gray-900">
                     {review.name}

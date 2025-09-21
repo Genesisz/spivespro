@@ -89,7 +89,7 @@ export default function FootballPlatformFeatures() {
 
         {/* Footer Section */}
         <div className="flex flex-col relative lg:flex-row items- justify-between pt-16">
-          <div className="absolute top-0 bg-orange-800/20 w-[150vw] h-[40rem] -left-[15rem]"/>
+          <div className="absolute top-0 bg-orange-800/20 w-[150vw] h-[40rem] -left-[25rem]"/>
           <div className="lg:w-1/2 mb-8 lg:mb-0 relative z-10">
             <h2 className="text-4xl md:text-6xl font-bold adumu leading-tight">
               The Dream <br /> starts

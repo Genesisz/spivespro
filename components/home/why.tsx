@@ -29,9 +29,9 @@ const Why = () => {
                 />
                 <div className='max-w-xl w-full'>
                     <h2 className='adumu text-3xl sm:text-4xl md:text-5xl mb-6 md:mb-8'>Why do you need a <br /> player profile card?</h2>
-                    <p className='text-sm sm:text-base'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                    <p className='text-sm sm:text-base'>Our player profile cards serve as digital spotlights for young African athletes with extraordinary potential. In regions where visibility is limited and opportunities scarce, these profiles bridge crucial gaps between talent and opportunity.
                         <br /><br />
-                        Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+                        Each card showcases an athlete&apos;s unique abilities, performance metrics, and career highlights—creating a professional digital identity that catches the attention of scouts, coaches, and clubs worldwide.
                         </p>
                         <button className='bg-white text-black mt-6 md:mt-8 px-4 py-2 rounded-md text-sm sm:text-base'>
                             How it works
