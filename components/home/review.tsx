@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 
-// TypeScript interfaces
 interface Review {
   name: string;
   title: string;
@@ -11,79 +10,99 @@ interface Review {
   category: 'footballers' | 'coaches' | 'scouts';
 }
 
-// Enhanced reviews data with categories
 const reviews: Review[] = [
+  // ⚽️ Footballers
   {
-    name: "Jane Smith",
-    title: "Aspiring Footballer",
-    image: "/img/reviewer2.jpg",
-    review: "Creating my player profile on Spives was a game-changer. The user-friendly interface and comprehensive features made it easy to highlight my strengths and get noticed by scouts.",
+    name: "Chuka Okorie",
+    title: "Midfielder, Enugu Rangers",
+    image: "/img/player1.jpg",
+    review: "Spives helped me get noticed outside my state for the first time. Everything changed after that.",
     category: "footballers"
   },
   {
-    name: "Mike Johnson",
-    title: "Youth Footballer",
-    image: "/img/reviewer3.jpg",
-    review: "Spives provided me with the tools and exposure I needed to take my football career to the next level. The platform's focus on player development and opportunities is unmatched.",
+    name: "Fatima Lawal",
+    title: "Forward, Nasarawa Amazons",
+    image: "/img/player2.jpg",
+    review: "I use Spives to track my performance and connect with new opportunities. It’s like having a manager in your pocket.",
     category: "footballers"
   },
   {
-    name: "Sarah Williams",
-    title: "Professional Player",
-    image: "/img/reviewer1.jpg",
-    review: "The networking opportunities on Spives are incredible. I connected with coaches from different leagues and found opportunities I never knew existed.",
+    name: "Ibrahim Saka",
+    title: "Aspiring Pro, Lagos",
+    image: "/img/player3.jpg",
+    review: "Before Spives, I was just training and hoping. Now I’m getting feedback from real scouts. Motivation don double!",
     category: "footballers"
   },
   {
-    name: "Coach David Thompson",
-    title: "Academy Coach",
-    image: "/img/coach1.jpg",
-    review: "As a coach, Spives has revolutionized how I discover new talent. The detailed player profiles and video analysis tools are exceptional for identifying potential.",
-    category: "coaches"
+    name: "Blessing Eze",
+    title: "U-20 National Team Prospect",
+    image: "/img/player4.jpg",
+    review: "Uploading my clips and stats on Spives got me a trial in Europe. Na God and Spives run am!",
+    category: "footballers"
   },
+
+  // 🎓 Coaches
   {
-    name: "Maria Rodriguez",
-    title: "Youth Development Coach",
+    name: "Coach Tunde B.",
+    title: "Youth Coach, Lagos",
     image: "/img/coach2.jpg",
-    review: "The platform's coaching tools have streamlined my player evaluation process. I can now track progress and identify areas for improvement more effectively.",
+    review: "Since I started using Spives, tracking player progress has become so easy. This platform is a blessing for grassroots football.",
     category: "coaches"
   },
   {
-    name: "James Wilson",
-    title: "Professional Coach",
+    name: "Ngozi Umeh",
+    title: "Head Coach, Abuja Academy",
     image: "/img/coach3.jpg",
-    review: "Spives has become an essential part of my coaching toolkit. The ability to connect with players globally and share training insights is invaluable.",
+    review: "Spives makes it easier for me to mentor and monitor my players. The tools are practical and built for real Nigerian challenges.",
     category: "coaches"
   },
   {
-    name: "Alex Morgan",
-    title: "Professional Scout",
+    name: "Samuel Dogo",
+    title: "Technical Director, Kaduna Youth FC",
+    image: "/img/coach4.jpg",
+    review: "This is exactly what we need in Nigeria. Spives is saving me hours of paperwork every week.",
+    category: "coaches"
+  },
+  {
+    name: "Aisha Bello",
+    title: "Women's Team Coach, Ilorin",
+    image: "/img/coach5.jpg",
+    review: "For the first time, my girls have access to the same digital tools as the big teams. This is the future.",
+    category: "coaches"
+  },
+
+  // 👀 Scouts
+  {
+    name: "Kwesi",
+    title: "Talent Scout",
+    image: "/img/reviewer2.jpg",
+    review: "Right now I short-list faster; the full release will be a game changer.",
+    category: "scouts"
+  },
+  {
+    name: "Ikpeme David",
+    title: "Scouts",
+    image: "/img/reviewer1.jpg",
+    review: "I joined the test group—when scouting drops, 80% of my problem is solved.",
+    category: "scouts"
+  },
+  {
+    name: "Bola Hassan",
+    title: "Independent Scout",
     image: "/img/scout1.jpg",
-    review: "The scouting features on Spives are game-changing. I can identify promising talent from anywhere in the world and track their development over time.",
+    review: "This is what we’ve been waiting for. I can now find and follow talent across Nigeria without being physically present.",
     category: "scouts"
   },
   {
-    name: "Roberto Silva",
-    title: "Regional Scout",
-    image: "/img/scout2.jpg",
-    review: "Spives has made talent scouting more efficient than ever. The comprehensive player database and advanced filtering options save me countless hours.",
-    category: "scouts"
-  },
-  {
-    name: "Emma Clarke",
-    title: "International Scout",
+    name: "Zainab Musa",
+    title: "International Scout (Based in Abuja)",
     image: "/img/scout3.jpg",
-    review: "The global reach of Spives is impressive. I've discovered exceptional talent from emerging markets that I would never have found otherwise.",
-    category: "scouts"
-  },
-  {
-    name: "Emma Clarke",
-    title: "International Scout",
-    image: "/img/scout3.jpg",
-    review: "The global reach of Spives is impressive. I've discovered exceptional talent from emerging markets that I would never have found otherwise.",
+    review: "Spives is putting Nigerian talent on the global map. I've already connected with clubs outside Africa through this tool.",
     category: "scouts"
   }
 ];
+
+
 
 type TabType = 'footballers' | 'coaches' | 'scouts';
 

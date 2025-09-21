@@ -6,7 +6,7 @@ import { useUser } from "@/lib/useUser";
 import { signOut } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const links = [
+const links = [  
   {
     name: "Talents",
     href: "/talents",
@@ -15,6 +15,10 @@ const links = [
     name: "Pricing",
     href: "/",
   },
+  {
+    name: "About us",
+    href: "/about-us",
+  }
 ];
 
 const Navbar = () => {

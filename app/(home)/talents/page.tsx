@@ -43,6 +43,7 @@ export default function TalentsPage() {
       });
 
       const response = await fetch(`/api/talents?${queryParams}`);
+      console.log({response})
       console.log({ response });
       if (!response.ok) throw new Error("Failed to fetch talents");
 
@@ -84,7 +85,7 @@ export default function TalentsPage() {
   }
 
   return (
-    <div className="min-h-screen montserrat bg-gray-50 p-8">
+    <div className="min-h-screen montserrat bg-gray-50 p-8 pt-32">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Filters */}
         <div className="flex items-center gap-4 flex-wrap">
@@ -212,7 +213,7 @@ export default function TalentsPage() {
                 <div className="flex justify-between items-end">
                   <div className="flex gap-1 mt-1">
                   {
-                    talent.selectedPositions.map((position, index) => (
+                    talent.selectedPositions && talent.selectedPositions.map((position, index) => (
                       <div key={index} className="w-7 text-[10px] flex items-center justify-center text-orange-200 h-7 rounded-full bg-blue-900">
                         {position}
                       </div>
@@ -288,7 +289,7 @@ const FootballField = ({ positions }: { positions: string[] }) => {
       />
 
       {/* Position markers */}
-      {positions.includes("LM") && (
+      {positions && positions.includes("LM") && (
         <div className="absolute top-1/2 left-6 transform -translate-y-1/2 w-10 h-10 bg-blue-brand-600 text-white rounded-full flex items-center justify-center font-bold text-sm border-2 border-white shadow-md">
           LM
         </div>
@@ -300,7 +301,7 @@ const FootballField = ({ positions }: { positions: string[] }) => {
         </div>
       )} */}
 
-      {positions.includes("CB") && (
+      {positions && positions.includes("CB") && (
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-blue-brand-700 text-white rounded-full flex items-center justify-center font-bold text-xs border-2 border-white shadow-md">
           CB
         </div>

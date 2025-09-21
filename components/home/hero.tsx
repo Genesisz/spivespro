@@ -37,7 +37,7 @@ const LandingPage = () => {
                             alt="Hero Illustration"
                             width={1200}
                             height={1200}
-                            className="w-auto h-[25rem] sm:h-[30rem] md:h-[35rem] lg:h-[40rem] relative z-10"
+                            className="w-auto h-[25rem] sm:h-[30rem] md:h-[35rem] lg:h-[55rem] relative z-10"
                             priority
                         />
                     </div>
