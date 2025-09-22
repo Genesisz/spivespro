@@ -57,7 +57,7 @@ export default function FootballPlatformFeatures() {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header Section */}
         <div className="md:text-center mb-16">
-          <h2 className="text-5xl md:text-4xl font-bold mb-4 adumu">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 adumu">
             Maximize your options
           </h2>
           <p className="text-[14px] md:text-lg mb-4">
@@ -89,7 +89,7 @@ export default function FootballPlatformFeatures() {
 
         {/* Footer Section */}
         <div className="flex flex-col relative lg:flex-row items- justify-between pt-16">
-          <div className="absolute top-0 bg-orange-800/20 w-[150vw] h-[40rem] -left-[25rem]"/>
+          <div className="absolute top-0 bg-orange-800/20 w-[150vw] h-[40rem] -left-[10rem] md:-left-[25rem]"/>
           <div className="lg:w-1/2 mb-8 lg:mb-0 relative z-10">
             <h2 className="text-4xl md:text-6xl font-bold adumu leading-tight">
               The Dream <br /> starts

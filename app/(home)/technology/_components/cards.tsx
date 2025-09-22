@@ -66,7 +66,7 @@ const Cards: React.FC = () => {
                             >
                                 {/* Text Content */}
                                 <div className={`flex-1 text-white text- ${card.position == "left" ? "text-left" : "text-right"} max-w-lg`}>
-                                    <h2 className={`max-w-md ${card.position == "left" ? "mx-auto lg:mr-auto lg:ml-0" : "mx-auto lg:ml-auto lg:mr-0"} adumu text-2xl lg:text-3xl xl:text-5xl mb-3 sm:mb-4 leading-tight`}>
+                                    <h2 className={`max-w-md ${card.position == "left" ? "mx-auto lg:mr-auto lg:ml-0" : "mx-auto lg:ml-auto lg:mr-0"} adumu text-xl xs:text-2xl sm:text-3xl lg:text-4xl xl:text-5xl mb-3 sm:mb-4 leading-tight`}>
                                         {card.title}
                                     </h2>
                                     <div className="text-base lg:text-xl leading-relaxed opacity-90">

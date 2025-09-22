@@ -159,7 +159,7 @@ const Review: React.FC = () => {
 
         {/* Tab Navigation - Mobile Responsive */}
         <div className="mt-8 sm:mt-12 lg:mt-16 mx-auto w-fit">
-          <div className="flex flex-col sm:flex-row bg-white gap-2 sm:gap-4 lg:gap-10 p-2 px-4 sm:px-6 lg:px-8 rounded-full shadow-lg">
+          <div className="flex flex-row bg-white gap-2 sm:gap-4 lg:gap-10 p-2 px-4 sm:px-6 lg:px-8 rounded-full shadow-lg">
             {(Object.keys(tabLabels) as TabType[]).map((role, index) => (
               <button
                 key={index}

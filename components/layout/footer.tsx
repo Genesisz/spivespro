@@ -81,7 +81,7 @@ const Footer = () => {
               <ul className="space-y-2">
                 <li>
                   <Link
-                    href="/case-studies"
+                    href="/technology"
                     className="text-gray-300 hover:text-amber-500 transition-colors duration-300 font-[300]"
                   >
                     Technology
@@ -142,7 +142,7 @@ const Footer = () => {
               <ul className="space-y-2">
                 <li>
                   <Link
-                    href="/about"
+                    href="/about-us"
                     className="text-gray-300 hover:text-amber-500 transition-colors duration-300 font-[300]"
                   >
                     About Us

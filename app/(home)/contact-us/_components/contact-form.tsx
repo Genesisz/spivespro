@@ -71,7 +71,7 @@ const ContactForm: React.FC = () => {
 
                     {/* Left Side - Contact Form */}
                     <div className="order-2 lg:order-1 px-4 sm:px-0">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-left font-black text-white mb-4 adumu uppercase tracking-tight">
+                        <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-left font-black text-white mb-4 adumu uppercase tracking-tight">
                             contact us
                         </h1>
                         <div className="bg-orange-400/20 text-left backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl border border-white/20">
