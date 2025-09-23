@@ -52,7 +52,7 @@ const LandingPage = () => {
                         
                         {/* Main hero image */}
                         <Image
-                            src="/img/Untitled design (7) (1).svg"
+                            src="/img/Spives Web App Design.svg"
                             alt="Hero Illustration"
                             width={1200}
                             height={1200}

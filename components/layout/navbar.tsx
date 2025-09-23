@@ -135,7 +135,7 @@ const Navbar = () => {
         backdropFilter: "blur(10px)"
       }}
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <div className="lg:pl-[5%]  max-w-7xl lg:max-w-full mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="inline-block">
           <motion.div 

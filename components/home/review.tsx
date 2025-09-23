@@ -13,61 +13,61 @@ interface Review {
 const reviews: Review[] = [
   // ⚽️ Footballers
   {
-    name: "Chuka Okorie",
-    title: "Midfielder, Enugu Rangers",
+    name: "Chinedu",
+    title: "Forward Winger",
     image: "/img/player1.jpg",
-    review: "Spives helped me get noticed outside my state for the first time. Everything changed after that.",
+    review: "My game finally looks professional online!",
     category: "footballers"
   },
   {
-    name: "Fatima Lawal",
-    title: "Forward, Nasarawa Amazons",
+    name: "Zama",
+    title: "Midfielder",
     image: "/img/player2.jpg",
-    review: "I use Spives to track my performance and connect with new opportunities. It’s like having a manager in your pocket.",
+    review: "One link, all my highlights. Easy..",
     category: "footballers"
   },
   {
-    name: "Ibrahim Saka",
-    title: "Aspiring Pro, Lagos",
+    name: "Ibrahim",
+    title: "Centre Back",
     image: "/img/player3.jpg",
-    review: "Before Spives, I was just training and hoping. Now I’m getting feedback from real scouts. Motivation don double!",
+    review: "Coaches take me more seriously now.",
     category: "footballers"
   },
   {
-    name: "Blessing Eze",
-    title: "U-20 National Team Prospect",
+    name: "Emmanuel",
+    title: "Goalkeeper",
     image: "/img/player4.jpg",
-    review: "Uploading my clips and stats on Spives got me a trial in Europe. Na God and Spives run am!",
+    review: "I wondered what it looked like having a card that makes you look like you are already in a football game!",
     category: "footballers"
   },
 
   // 🎓 Coaches
   {
-    name: "Coach Tunde B.",
-    title: "Youth Coach, Lagos",
+    name: "Uche B.",
+    title: "Coach",
     image: "/img/coach2.jpg",
-    review: "Since I started using Spives, tracking player progress has become so easy. This platform is a blessing for grassroots football.",
+    review: "I can manage my whole team digitally.",
     category: "coaches"
   },
   {
-    name: "Ngozi Umeh",
-    title: "Head Coach, Abuja Academy",
+    name: "Ayo",
+    title: "Coach",
     image: "/img/coach3.jpg",
-    review: "Spives makes it easier for me to mentor and monitor my players. The tools are practical and built for real Nigerian challenges.",
+    review: "Now I can track my players' progress without drowning in paperwork.",
     category: "coaches"
   },
   {
-    name: "Samuel Dogo",
-    title: "Technical Director, Kaduna Youth FC",
+    name: "Anita",
+    title: "Female Coach",
     image: "/img/coach4.jpg",
-    review: "This is exactly what we need in Nigeria. Spives is saving me hours of paperwork every week.",
+    review: "It's like having a digital CV for my whole team.",
     category: "coaches"
   },
   {
-    name: "Aisha Bello",
-    title: "Women's Team Coach, Ilorin",
+    name: "Vincent C",
+    title: "U13 Coach",
     image: "/img/coach5.jpg",
-    review: "For the first time, my girls have access to the same digital tools as the big teams. This is the future.",
+    review: "Spives helps me show scouts what my boys are really made of",
     category: "coaches"
   },
 
@@ -90,7 +90,7 @@ const reviews: Review[] = [
     name: "Bola Hassan",
     title: "Independent Scout",
     image: "/img/scout1.jpg",
-    review: "This is what we’ve been waiting for. I can now find and follow talent across Nigeria without being physically present.",
+    review: "This is what we've been waiting for. I can now find and follow talent across Nigeria without being physically present.",
     category: "scouts"
   },
   {
@@ -133,7 +133,7 @@ const Review: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
           {filteredReviews.map((review, index) => (
             <div key={index} className="bg-orange-400 rounded-lg shadow-md p-2 mx-auto w-full max-w-sm">
-              <p className="text-gray-800 bg-white rounded-md h-[10rem] sm:h-[11rem] lg:h-[12rem] flex items-center px-3 sm:px-4 text-sm sm:text-base leading-relaxed">
+              <p className="text-gray-800 bg-white rounded-md h-[10rem] sm:h-[11rem] lg:h-[12rem] flex items-center px-3 sm:px-4 text-sm sm:text-base md:text-2xl leading-relaxed">
                 &ldquo;{review.review}&rdquo;
               </p>
               <div className="flex items-center mt-3 sm:mt-4">
