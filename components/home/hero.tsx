@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-
+import Link from "next/link";
 const LandingPage = () => {
     return (
         <>
@@ -33,9 +33,9 @@ const LandingPage = () => {
                         <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed px-4 sm:px-0">
                             Get noticed with professional player profile cards — your digital football identity built to impress coaches, inspire teammates, and attract scouts
                         </p>
-                        <button className="mt-6 w-fit bg-orange-300 hover:bg-orange-400 transition-colors text-black px-6 py-3 rounded-md text-sm sm:text-base font-medium shadow-lg">
+                        <Link href="/login" className="mt-6 w-fit bg-orange-300 hover:bg-orange-400 transition-colors text-black px-6 py-3 rounded-md text-sm sm:text-base font-medium shadow-lg">
                             Create a profile card
-                        </button>
+                        </Link>
                     </div>
                     
                     {/* Hero Images - Bottom on mobile */}
