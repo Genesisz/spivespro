@@ -130,7 +130,7 @@ const Review: React.FC = () => {
 {/* bg-[#B9B9E7]/30 */}
       <div className=" p-4 sm:p-6 lg:p-8 mt-8 sm:mt-12 lg:mt-16">
         {/* Reviews Grid - Mobile Responsive */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
           {filteredReviews.map((review, index) => (
             <div key={index} className="bg-orange-400 rounded-lg shadow-md p-2 mx-auto w-full max-w-sm">
               <p className="text-gray-800 bg-white rounded-md h-[10rem] sm:h-[11rem] lg:h-[12rem] flex items-center px-3 sm:px-4 text-sm sm:text-base md:text-2xl leading-relaxed">
