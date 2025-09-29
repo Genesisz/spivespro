@@ -14,7 +14,7 @@ const Hero = () => {
                 />
             </div>
             <div className='h-screen w-screen z-10 absolute top-0 left-0 bg-[#000066]/50'/>
-            <div className='max-w-7xl mx-auto flex items-center border border-red-500 text-white h-fit justify-center relative z-10 px-4'>
+            <div className='max-w-7xl mx-auto flex items-center text-white h-fit justify-center relative z-10 px-4'>
                 <h1 className="adumu text-3xl xs:text-4xl sm:text-5xl text-center md:text-6xl lg:text-[7rem] leading-tight md:leading-[7rem]">HOW SPIVES <br /> TECHNOLOGY WORK</h1>
             </div>
         </div>

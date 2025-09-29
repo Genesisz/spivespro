@@ -22,10 +22,10 @@ const LandingPage = () => {
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#03033E]/60 to-[#000066]/60" />
 
                 {/* Main Content Container */}
-                <div className="flex flex-col lg:flex-row px-4 sm:px-6 md:px-8 lg:pl-[5%] mx-auto text-white text-center lg:text-left items-center justify-between lg:gap-16 min-h-screen relative z-10 pt-8 lg:py-0">
+                <div className="flex flex-col lg:flex-row px-4 sm:px-6 md:px-8 lg:pl-[5%] mx-auto text-white text-center items-center justify-center lg:justify-between lg:gap-16 min-h-screen relative z-10 pt-8 lg:py-0">
                     <div />
-                    {/* Text Content - Centered on mobile */}
-                    <div className="max-w-3xl flex-shrink-0 lg:order-1 flex flex-col justify-center lg:justify-start h-full lg:h-auto">
+                    {/* Text Content - Centered on all screens */}
+                    <div className="max-w-3xl flex-shrink-0 lg:order-1 flex flex-col items-center lg:items-start justify-center h-full lg:h-auto">
                         <h1 className="adumu text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-orange-400 leading-tight">
                             become a pro <br /> 
                             <span className="text-white">with ease</span>
@@ -38,15 +38,15 @@ const LandingPage = () => {
                         </Link>
                     </div>
                     
-                    {/* Hero Images - Bottom on mobile */}
-                    <div className="w-full max-w-5xl relative h-[300px] xs:h-[350px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-screen overflow-hidden flex items-end justify-center lg:order-2 mt-8 lg:mt-0">
-                        {/* Background illustration - hidden on small screens to reduce clutter */}
+                    {/* Hero Images - Hidden on mobile, visible on large screens */}
+                    <div className="hidden lg:flex w-full max-w-5xl relative h-[600px] xl:h-screen overflow-hidden items-end justify-center lg:order-2">
+                        {/* Background illustration */}
                         <Image
                             src="/img/Spives Web App Design (5).svg"
                             alt="Hero Illustration Background"
                             width={800}
                             height={800}
-                            className="hidden sm:block w-full h-auto object-contain absolute top-0 -left-4 md:-left-8 lg:-left-15 opacity-50 sm:opacity-70"
+                            className="w-full h-auto object-contain absolute top-0 -left-4 md:-left-8 lg:-left-15 opacity-50 sm:opacity-70"
                             priority
                         />
                         
@@ -56,7 +56,7 @@ const LandingPage = () => {
                             alt="Hero Illustration"
                             width={1200}
                             height={1200}
-                            className="w-auto h-[380px] xs:h-[320px] sm:h-[350px] md:h-[450px] lg:h-[500px] xl:h-[55rem] relative z-10 object-contain"
+                            className="w-auto h-[500px] xl:h-[55rem] relative z-10 object-contain"
                             priority
                         />
                     </div>
