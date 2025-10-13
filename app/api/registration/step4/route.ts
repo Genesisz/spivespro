@@ -2,12 +2,10 @@ import { NextRequest } from 'next/server';
 import { connectToDatabase } from '@/lib/db';
 import { ObjectId } from 'mongodb';
 
-interface RegistrationUpdateData {
-  step: number;
-  updatedAt: Date;
-  uploadedImageUrl?: string;
-  uploadedImagePublicId?: string;
-  uploadedFileName?: string;
+interface RegistrationDoc {
+  _id?: ObjectId;
+  role?: string;
+  [key: string]: unknown;
 }
 
 export async function POST(request: NextRequest) {
@@ -29,8 +27,6 @@ export async function POST(request: NextRequest) {
     const { db } = await connectToDatabase();
     const registrationsCollection = db.collection('registrations');
     const usersCollection = db.collection('users');
-    
-    // First, get the registration data
     const registration = await registrationsCollection.findOne({ _id: new ObjectId(id) });
     
     if (!registration) {
@@ -44,12 +40,20 @@ export async function POST(request: NextRequest) {
     }
 
     // Prepare the final user data
-    const userData = {
+    // Prepare the final user data with a concrete type (avoid `any`)
+    const userData: RegistrationDoc & {
+      step: number;
+      updatedAt: Date;
+      isProfileComplete: boolean;
+      uploadedImageUrl?: string;
+      uploadedImagePublicId?: string;
+      uploadedFileName?: string;
+    } = {
       ...registration,
       step: 4,
       updatedAt: new Date(),
       isProfileComplete: true,
-      role: registration.role || 'user'
+      role: (registration as RegistrationDoc)?.role || 'user'
     };
 
     // Add image data if provided

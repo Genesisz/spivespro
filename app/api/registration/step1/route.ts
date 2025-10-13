@@ -31,11 +31,14 @@ export async function POST(request: NextRequest) {
     }
 
     const { db } = await connectToDatabase();
-    const collection = db.collection('registrations');
+    const registrationsCollection = db.collection('registrations');
+    const usersCollection = db.collection('users');
 
-    // Check if email already exists
-    const existingUser = await collection.findOne({ email });
-    if (existingUser) {
+    // Check if email already exists in either collection
+    const existingRegistration = await registrationsCollection.findOne({ email });
+    const existingUser = await usersCollection.findOne({ email });
+    
+    if (existingRegistration || existingUser) {
       return new Response(
         JSON.stringify({ error: 'Email already exists' }),
         { status: 409 },
@@ -45,7 +48,7 @@ export async function POST(request: NextRequest) {
     // Hash the password before saving
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const result = await collection.insertOne({
+    const result = await registrationsCollection.insertOne({
       step: 1,
       fullName,
       dateOfBirth,
