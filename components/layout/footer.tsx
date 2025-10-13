@@ -103,30 +103,6 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="/blog"
-                    className="text-gray-300 hover:text-amber-500 transition-colors duration-300 font-[300]"
-                  >
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/webinars"
-                    className="text-gray-300 hover:text-amber-500 transition-colors duration-300 font-[300]"
-                  >
-                    Webinars
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/newsletter"
-                    className="text-gray-300 hover:text-amber-500 transition-colors duration-300 font-[300]"
-                  >
-                    Newsletter
-                  </Link>
-                </li>
-                <li>
-                  <Link
                     href="/faqs"
                     className="text-gray-300 hover:text-amber-500 transition-colors duration-300 font-[300]"
                   >
