@@ -23,7 +23,7 @@ export async function GET() {
     const { db } = await connectToDatabase();
     
     // Fetch recent players (non-admin, non-coach users)
-    const recentPlayers = await db.collection('registrations')
+    const recentPlayers = await db.collection('users')
       .find({
         role: { $nin: ['admin', 'coach'] }
       })

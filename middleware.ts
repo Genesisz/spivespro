@@ -16,6 +16,16 @@ export async function middleware(req: NextRequest) {
     }
   }
 
+  // Protect /dashboard and its subroutes
+  if (pathname.startsWith('/dashboard')) {
+    if (!token) {
+      const loginUrl = req.nextUrl.clone();
+      loginUrl.pathname = '/login';
+      loginUrl.searchParams.set('callbackUrl', pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+  }
+
   // Redirect authenticated users away from /login and /register
   if (token && (pathname === '/login' || pathname === '/register')) {
     const dashboardUrl = req.nextUrl.clone();
@@ -27,5 +37,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/profile/:path*', '/login', '/register'],
+  matcher: ['/profile/:path*', '/login', '/register', '/dashboard/:path*'],
 }; 

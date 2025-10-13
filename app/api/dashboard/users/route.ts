@@ -43,7 +43,7 @@ export async function GET() {
     }
 
     const { db } = await connectToDatabase();
-    const collection = db.collection('registrations');
+    const collection = db.collection('users');
 
     // Fetch all users from the database
     const users = await collection.find({}).toArray() as DatabaseUser[];

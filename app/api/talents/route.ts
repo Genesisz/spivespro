@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
     const ageRange = searchParams.get('age');
 
     const { db } = await connectToDatabase();
-    const collection = db.collection('registrations');
+    const collection = db.collection('users');
 
     // Build query filters
     const query: TalentQuery = {

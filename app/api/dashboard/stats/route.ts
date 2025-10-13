@@ -22,10 +22,10 @@ export async function GET() {
 
     const { db } = await connectToDatabase();
     
-    const totalUsers = await db.collection('registrations').countDocuments({});
-    const totalCoaches = await db.collection('registrations').countDocuments({ role: 'coach' });
-    const totalAdmins = await db.collection('registrations').countDocuments({ role: 'admin' });
-    const recentUsers = await db.collection('registrations').countDocuments({
+    const totalUsers = await db.collection('users').countDocuments({});
+    const totalCoaches = await db.collection('users').countDocuments({ role: 'coach' });
+    const totalAdmins = await db.collection('users').countDocuments({ role: 'admin' });
+    const recentUsers = await db.collection('users').countDocuments({
       createdAt: { $gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) }
     });
 

@@ -221,7 +221,7 @@ const CreateProfilePage = () => {
     }
     setLoadingLocal(true);
     try {
-      const res = await fetch('/api/registeration/step1', {
+      const res = await fetch('/api/registration/step1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -251,7 +251,7 @@ const CreateProfilePage = () => {
     setApiError(null);
     setLoadingLocal(true);
     try {
-      const res = await fetch('/api/registeration/step3', {
+      const res = await fetch('/api/registration/step3', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -287,7 +287,7 @@ const CreateProfilePage = () => {
         uploadedFileName: uploadedFile?.name
       });
 
-      const res = await fetch('/api/registeration/step4', {
+      const res = await fetch('/api/registration/step4', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

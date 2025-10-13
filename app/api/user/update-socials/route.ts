@@ -33,7 +33,7 @@ export async function PATCH(request: NextRequest) {
 
     // Update the user in the database
     const { db } = await connectToDatabase();
-    const collection = db.collection('registrations');
+    const collection = db.collection('users');
     
     const updateData = {
       'socials.instagram': instagram || '',

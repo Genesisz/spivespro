@@ -49,7 +49,7 @@ export const authOptions: AuthOptions = {
         }
         
         const { db } = await connectToDatabase();
-        const user = await db.collection('registrations').findOne({ email: credentials.email }) as DatabaseUser | null;
+        const user = await db.collection('users').findOne({ email: credentials.email }) as DatabaseUser | null;
         
         if (!user) {
           throw new Error('No user found with this email address');
@@ -83,35 +83,11 @@ export const authOptions: AuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      // Fetch fresh user data from database to include any updates
-      if (token.email) {
-        try {
-          const { db } = await connectToDatabase();
-          const user = await db.collection('registrations').findOne({ email: token.email }) as DatabaseUser | null;
-          if (user) {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { password, ...userWithoutPass } = user;
-            session.user = sanitizeUser({
-              ...session.user,
-              ...userWithoutPass,
-              id: user._id.toString(),
-            });
-          }
-        } catch (error) {
-          console.error('Error fetching user data in session:', error);
-          // Fallback to token data if database fetch fails
-          session.user = sanitizeUser({
-            ...session.user,
-            ...token,
-          });
-        }
-      } else {
-        // Fallback to token data
-        session.user = sanitizeUser({
-          ...session.user,
-          ...token,
-        });
-      }
+      // Use token data directly instead of making database calls for performance
+      session.user = sanitizeUser({
+        ...session.user,
+        ...token,
+      });
       return session;
     },
   },

@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     }
 
     const { db } = await connectToDatabase();
-    const collection = db.collection('registrations');
+    const collection = db.collection('users');
 
     // Check if email already exists
     const existingUser = await collection.findOne({ email });
