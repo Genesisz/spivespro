@@ -26,14 +26,14 @@ const LandingPage = () => {
                     <div />
                     {/* Text Content - Centered on all screens */}
                     <div className="max-w-3xl flex-shrink-0 lg:order-1 flex flex-col items-center lg:items-start justify-center h-full lg:h-auto">
-                        <h1 className="adumu text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-orange-400 leading-tight">
+                        <h1 className="adumu text-left text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-orange-400 leading-tight">
                             become a pro <br /> 
                             <span className="text-white">with ease</span>
                         </h1>
                         <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed px-4 sm:px-0">
                             Get noticed with professional player profile cards — your digital football identity built to impress coaches, inspire teammates, and attract scouts
                         </p>
-                        <Link href="/login" className="mt-6 w-fit bg-orange-300 hover:bg-orange-400 transition-colors text-black px-6 py-3 rounded-md text-sm sm:text-base font-medium shadow-lg">
+                        <Link href="/register" className="mt-6 w-fit bg-orange-300 hover:bg-orange-400 transition-colors text-black px-6 py-3 rounded-md text-sm sm:text-base font-medium shadow-lg">
                             Create a profile card
                         </Link>
                     </div>
